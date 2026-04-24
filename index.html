@@ -11,11 +11,11 @@ html{scroll-behavior:smooth}
 body{font-family:'Source Sans 3',sans-serif;background:#f4f9fb;color:#0a2e42;font-size:16px;line-height:1.75}
 
 /* NAV */
-nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
-.nav-logo{font-family:'Lora',serif;color:#fff;font-size:18px;font-weight:600;letter-spacing:-.3px;text-decoration:none}
+nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Lora',serif;color:#fff;font-size:24px;font-weight:600;letter-spacing:-.3px;text-decoration:none}
 .nav-logo span{color:#00d4e8}
 .nav-links{display:flex;gap:26px;list-style:none}
-.nav-links a{color:#7dcfe0;font-size:14px;font-weight:400;text-decoration:none;cursor:pointer;transition:color .15s;padding:4px 0;border-bottom:2px solid transparent}
+.nav-links a{color:#7dcfe0;font-size:16px;font-weight:400;text-decoration:none;cursor:pointer;transition:color .15s;padding:4px 0;border-bottom:2px solid transparent}
 .nav-links a:hover,.nav-links a.on{color:#fff}
 .nav-links a.on{border-bottom-color:#00d4e8}
 .page{display:none}
@@ -30,7 +30,7 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .page-banner p{font-size:18px;color:#daf0f5;line-height:1.75;max-width:640px}
 .section{padding:20px 48px 24px}
 .section+.section{border-top:1px solid #d0e8f0}
-.section-label{font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#4a90aa;margin-bottom:14px}
+.section-label{font-size:14px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#4a90aa;margin-bottom:16px}
 .badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500;white-space:nowrap;background:#daf0f5;color:#0d4a6b}
 
 /* HERO */
@@ -38,10 +38,10 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .hero-bg{position:absolute;inset:0;background-image:url('MorningFogRectangle.jpg');background-size:cover;background-position:center 40%;opacity:.6}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,74,107,.88) 0%,rgba(13,74,107,.55) 55%,rgba(13,74,107,.15) 100%)}
 .hero-content{position:relative;z-index:2;padding:36px 48px 40px;max-width:620px}
-.eyebrow{font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#00d4e8;margin-bottom:14px}
+.eyebrow{font-size:15px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#00d4e8;margin-bottom:14px}
 .hero-content h1{font-family:'Lora',serif;font-size:50px;font-weight:600;line-height:1.1;margin-bottom:10px;color:#fff}
-.hero-content .role{font-size:18px;color:#daf0f5;margin-bottom:4px}
-.hero-content .inst{font-size:14px;color:#7dcfe0;margin-bottom:28px}
+.hero-content .role{font-size:20px;color:#daf0f5;margin-bottom:6px}
+.hero-content .inst{font-size:18px;color:#7dcfe0;margin-bottom:28px}
 .hero-content .bio{font-size:17px;color:#daf0f5;line-height:1.8;max-width:500px}
 
 /* RESEARCH BLOCKS */
@@ -650,11 +650,16 @@ footer a:hover{color:#fff}
 </div>
 
 <footer>
-  <p>
-    Rycyk Lab &nbsp;·&nbsp; New College of Florida &nbsp;·&nbsp; Sarasota, FL<br>
-    <a href="mailto:arycyk@ncf.edu">arycyk@ncf.edu</a> &nbsp;&nbsp;·&nbsp;&nbsp;
-    <a href="https://www.ncf.edu/departments/mimms/" target="_blank">MIMMS Program</a>
-  </p>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px">
+    <p>
+      Rycyk Lab &nbsp;·&nbsp; New College of Florida &nbsp;·&nbsp; Sarasota, FL<br>
+      <a href="mailto:arycyk@ncf.edu">arycyk@ncf.edu</a> &nbsp;&nbsp;·&nbsp;&nbsp;
+      <a href="https://www.ncf.edu/departments/mimms/" target="_blank">MIMMS Program</a>
+    </p>
+    <a href="https://www.ncf.edu" target="_blank" style="display:inline-block;background:rgba(255,255,255,0.92);border-radius:8px;padding:8px 14px;line-height:0">
+      <img src="NCF Logo.jpg" alt="New College of Florida" style="height:44px;width:auto;display:block">
+    </a>
+  </div>
 </footer>
 
 <script>
