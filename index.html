@@ -22,12 +22,15 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .page.on{display:block}
 
 /* SHARED */
-.page-banner{background:#0d4a6b;padding:20px 48px 22px}
-.page-banner h2{font-family:'Lora',serif;font-size:32px;color:#fff;margin-bottom:10px;font-weight:600}
-.page-banner p{font-size:17px;color:#7dcfe0;line-height:1.75;max-width:640px}
+.page-banner{position:relative;padding:32px 48px 30px;overflow:hidden;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end}
+.page-banner-bg{position:absolute;inset:0;background-image:url('GreenWaterBanner.jpg');background-size:cover;background-position:center 40%;opacity:.55}
+.page-banner-overlay{position:absolute;inset:0;background:rgba(13,74,107,0.72)}
+.page-banner-content{position:relative;z-index:2}
+.page-banner h2{font-family:'Lora',serif;font-size:40px;color:#fff;margin-bottom:10px;font-weight:600}
+.page-banner p{font-size:18px;color:#daf0f5;line-height:1.75;max-width:640px}
 .section{padding:20px 48px 24px}
 .section+.section{border-top:1px solid #d0e8f0}
-.section-label{font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#4a90aa;margin-bottom:14px}
+.section-label{font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#4a90aa;margin-bottom:14px}
 .badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500;white-space:nowrap;background:#daf0f5;color:#0d4a6b}
 
 /* HERO */
@@ -36,20 +39,20 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(13,74,107,.88) 0%,rgba(13,74,107,.55) 55%,rgba(13,74,107,.15) 100%)}
 .hero-content{position:relative;z-index:2;padding:36px 48px 40px;max-width:620px}
 .eyebrow{font-size:12px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#00d4e8;margin-bottom:14px}
-.hero-content h1{font-family:'Lora',serif;font-size:44px;font-weight:600;line-height:1.1;margin-bottom:10px;color:#fff}
-.hero-content .role{font-size:17px;color:#daf0f5;margin-bottom:4px}
+.hero-content h1{font-family:'Lora',serif;font-size:50px;font-weight:600;line-height:1.1;margin-bottom:10px;color:#fff}
+.hero-content .role{font-size:18px;color:#daf0f5;margin-bottom:4px}
 .hero-content .inst{font-size:14px;color:#7dcfe0;margin-bottom:28px}
 .hero-content .bio{font-size:17px;color:#daf0f5;line-height:1.8;max-width:500px}
 
 /* RESEARCH BLOCKS */
-.research-block{display:grid;grid-template-columns:300px 1fr;gap:28px;padding:18px 0;border-bottom:1px solid #d0e8f0;align-items:start}
+.research-block{display:grid;grid-template-columns:280px 1fr;gap:32px;padding:20px 0 24px;border-bottom:1.5px solid #c8e4ee;align-items:start}
 .research-block:last-child{border-bottom:none}
 .research-block.flip{grid-template-columns:1fr 300px}
 .research-block.flip .research-img-wrap{order:2}
 .research-block.flip .research-text{order:1}
 .research-img{width:100%;height:210px;object-fit:cover;border-radius:8px;display:block}
 .research-img-caption{font-size:13px;color:#4a90aa;margin-top:7px;line-height:1.45}
-.research-text h3{font-family:'Lora',serif;font-size:19px;font-weight:600;color:#0d4a6b;margin-bottom:12px}
+.research-text h3{font-family:'Lora',serif;font-size:22px;font-weight:600;color:#0d4a6b;margin-bottom:12px}
 .research-text p{font-size:17px;color:#2a5a72;line-height:1.8;margin-bottom:12px}
 .research-text ul{margin:8px 0 12px 20px}
 .research-text ul li{font-size:17px;color:#2a5a72;line-height:1.7;margin-bottom:5px}
@@ -57,7 +60,7 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .research-text .see-pubs:hover{text-decoration:underline}
 
 /* PUBLICATIONS */
-.year-head{font-size:11px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#5a8fa8;margin:16px 0 8px;padding-bottom:5px;border-bottom:1px solid #d0e8f0}
+.year-head{font-size:12px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:#5a8fa8;margin:16px 0 8px;padding-bottom:5px;border-bottom:1px solid #d0e8f0}
 .year-head:first-child{margin-top:0}
 .pub-entry{padding:6px 0;border-bottom:1px solid #e4f0f5}
 .pub-entry:last-child{border-bottom:none}
@@ -83,7 +86,7 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .contact-block a:hover{text-decoration:underline}
 
 /* GRAD */
-.grad-photo{width:100%;max-height:320px;object-fit:cover;object-position:center 25%;display:block}
+.grad-photo{width:100%;max-height:320px;object-fit:cover;object-position:center 70%;display:block}
 .students-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px}
 .student{background:#fff;border:1.5px solid #00a8c8;border-radius:10px;padding:20px;text-align:center}
 .avatar{width:44px;height:44px;border-radius:50%;background:#0d4a6b;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:12px;font-weight:500;color:#7dcfe0}
@@ -98,11 +101,11 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .course-list{list-style:none;columns:2;gap:36px}
 .course-list li{font-size:17px;color:#2a5a72;padding:6px 0;border-bottom:1px solid #e4f0f5;break-inside:avoid}
 .course-list li.highlight{color:#0d4a6b;font-weight:500}
-.field-course{padding:12px 0;border-bottom:1px solid #d0e8f0}
+.field-course{display:grid;grid-template-columns:260px 1fr;gap:28px;padding:20px 0;border-bottom:1px solid #d0e8f0;align-items:start}
 .field-course:last-child{border-bottom:none}
-.field-imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
-.field-img{width:100%;height:180px;object-fit:cover;border-radius:8px;display:block}
-.field-text h3{font-size:17px;font-weight:500;color:#0d4a6b;margin-bottom:10px}
+.field-img-wrap{display:flex;flex-direction:column;gap:8px}
+.field-img{width:100%;height:170px;object-fit:cover;border-radius:8px;display:block}
+.field-text h3{font-size:20px;font-weight:500;color:#0d4a6b;margin-bottom:10px}
 .field-text p{font-size:17px;color:#2a5a72;line-height:1.8}
 
 /* MEDIA */
@@ -123,7 +126,7 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .about-intro-text{font-size:17px;color:#2a5a72;line-height:1.85}
 .about-two{display:grid;grid-template-columns:1fr 1fr;gap:36px}
 .about-block{margin-bottom:20px}
-.about-block h3{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:#4a90aa;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #d0e8f0}
+.about-block h3{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:#4a90aa;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #d0e8f0}
 .about-entry{padding:10px 0;border-bottom:1px solid #e4f0f5;font-size:17px;color:#2a5a72;line-height:1.7}
 .about-entry:last-child{border-bottom:none}
 .about-entry strong{display:block;color:#0d4a6b;font-weight:500;font-size:14px;margin-bottom:3px}
@@ -292,10 +295,12 @@ footer a:hover{color:#fff}
 <!-- PUBLICATIONS -->
 <div id="pubs" class="page">
   <div class="page-banner">
-    <h2>Publications</h2>
+  <div class="page-banner-bg"></div>
+  <div class="page-banner-overlay"></div>
+  <div class="page-banner-content"><h2>Publications</h2>
     <p>Peer-reviewed articles and datasets.</p>
   </div>
-  <div class="section">
+</div><div class="section">
 
     <div class="year-head">Accepted / In Press</div>
     <div class="pub-entry">
@@ -375,11 +380,12 @@ footer a:hover{color:#fff}
 <div id="grad" class="page">
   <img src="ManateeMomCalf.JPG" alt="Florida manatee mother and calf" class="grad-photo">
   <div class="page-banner">
-    <h2>M.S. in Marine Mammal Science</h2>
+  <div class="page-banner-bg"></div>
+  <div class="page-banner-overlay"></div>
+  <div class="page-banner-content"><h2>M.S. in Marine Mammal Science</h2>
     <p>The Master's in Marine Mammal Science at New College of Florida is an intensive, two-year research-based program offering students a unique opportunity to conduct publication-quality research on marine mammals. Located on Sarasota Bay, the program combines rigorous coursework with hands-on research and close faculty mentorship.</p>
   </div>
-
-  <div class="section">
+</div><div class="section">
     <div class="section-label">Graduate students</div>
     <div class="students-grid">
       <div class="student"><div class="avatar">TF</div><div class="student-name">Tyler Fortune</div><div class="student-topic">Manatee presence at seagrass restoration sites via passive acoustic monitoring</div></div>
@@ -408,10 +414,12 @@ footer a:hover{color:#fff}
 <!-- UNDERGRADUATE THESES -->
 <div id="ugtheses" class="page">
   <div class="page-banner">
-    <h2>Undergraduate Theses</h2>
+  <div class="page-banner-bg"></div>
+  <div class="page-banner-overlay"></div>
+  <div class="page-banner-content"><h2>Undergraduate Theses</h2>
     <p>Undergraduate thesis projects sponsored from the Rycyk Lab at New College of Florida.</p>
   </div>
-  <div class="section">
+</div><div class="section">
     <div class="year-head">2025</div>
     <div class="pub-entry"><div class="ug-full">Hollick, A. (2025). A behavioral analysis of orca (<em>Orcinus orca</em>) attacks in the Mediterranean Sea.</div></div>
     <div class="pub-entry"><div class="ug-full">El Halabi Sanchez, H. (2025). Do whitespotted eagle rays demonstrate prey preference?</div></div>
@@ -453,11 +461,12 @@ footer a:hover{color:#fff}
 <!-- TEACHING -->
 <div id="teaching" class="page">
   <div class="page-banner">
-    <h2>Teaching</h2>
+  <div class="page-banner-bg"></div>
+  <div class="page-banner-overlay"></div>
+  <div class="page-banner-content"><h2>Teaching</h2>
     <p>Courses spanning marine mammal biology, bioacoustics, animal behavior, ecology, and environmental science, from first-year seminars to graduate research courses.</p>
   </div>
-
-  <div class="section">
+</div><div class="section">
     <div class="section-label">Current and recent courses — New College of Florida</div>
     <ul class="course-list">
       <li class="highlight">Practical AI for Researchers <span style="font-size:11px;background:#daf0f5;color:#0d4a6b;padding:2px 8px;border-radius:20px;font-weight:500;vertical-align:middle">new</span></li>
@@ -492,7 +501,7 @@ footer a:hover{color:#fff}
     </div>
 
     <div class="field-course">
-      <div class="field-imgs">
+      <div class="field-img-wrap">
         <img src="Yasuni.JPG" alt="Yasuni National Park, Ecuador" class="field-img">
         <img src="Isabela.JPG" alt="Isabela Island, Galapagos" class="field-img">
       </div>
@@ -503,7 +512,7 @@ footer a:hover{color:#fff}
     </div>
 
     <div class="field-course">
-      <div class="field-imgs">
+      <div class="field-img-wrap">
         <img src="RycykSnorkel.JPG" alt="Dr. Rycyk snorkeling with manatees" class="field-img" style="object-position:center 20%">
         <img src="ThreeManatees.JPG" alt="Three Florida manatees" class="field-img">
       </div>
@@ -519,11 +528,12 @@ footer a:hover{color:#fff}
 <!-- MEDIA -->
 <div id="media" class="page">
   <div class="page-banner">
-    <h2>Media</h2>
+  <div class="page-banner-bg"></div>
+  <div class="page-banner-overlay"></div>
+  <div class="page-banner-content"><h2>Media</h2>
     <p>Press coverage, collaborations, and public science communication.</p>
   </div>
-
-  <div class="section">
+</div><div class="section">
     <div class="section-label">Sound clips</div>
 
     <div class="audio-row">
@@ -591,11 +601,12 @@ footer a:hover{color:#fff}
 <!-- ABOUT -->
 <div id="about" class="page">
   <div class="page-banner">
-    <h2>About</h2>
+  <div class="page-banner-bg"></div>
+  <div class="page-banner-overlay"></div>
+  <div class="page-banner-content"><h2>About</h2>
     <p>Associate Professor of Marine Mammal Science and Biology at New College of Florida.</p>
   </div>
-
-  <div class="section">
+</div><div class="section">
     <div class="about-intro">
       <div>
         <img src="DTAG.png" alt="DTAG biologging tag deployment" class="about-intro-img">
