@@ -11,26 +11,26 @@ html{scroll-behavior:smooth}
 body{font-family:'Source Sans 3',sans-serif;background:#f4f9fb;color:#0a2e42;font-size:16px;line-height:1.75}
 
 /* NAV */
-nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:68px;position:sticky;top:0;z-index:100}
-.nav-logo{font-family:'Lora',serif;color:#fff;font-size:24px;font-weight:600;letter-spacing:-.3px;text-decoration:none}
+nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:72px;position:sticky;top:0;z-index:100}
+.nav-logo{font-family:'Lora',serif;color:#fff;font-size:26px;font-weight:600;letter-spacing:-.3px;text-decoration:none}
 .nav-logo span{color:#00d4e8}
 .nav-links{display:flex;gap:26px;list-style:none}
-.nav-links a{color:#7dcfe0;font-size:16px;font-weight:400;text-decoration:none;cursor:pointer;transition:color .15s;padding:4px 0;border-bottom:2px solid transparent}
+.nav-links a{color:#7dcfe0;font-size:17px;font-weight:400;text-decoration:none;cursor:pointer;transition:color .15s;padding:4px 0;border-bottom:2px solid transparent}
 .nav-links a:hover,.nav-links a.on{color:#fff}
 .nav-links a.on{border-bottom-color:#00d4e8}
 .page{display:none}
 .page.on{display:block}
 
 /* SHARED */
-.page-banner{position:relative;padding:32px 48px 30px;overflow:hidden;min-height:120px;display:flex;flex-direction:column;justify-content:flex-end}
-.page-banner-bg{position:absolute;inset:0;background-image:url('GreenWaterBanner.jpg');background-size:cover;background-position:center 40%;opacity:.55}
-.page-banner-overlay{position:absolute;inset:0;background:rgba(13,74,107,0.72)}
+.page-banner{position:relative;padding:36px 48px 32px;overflow:hidden;min-height:160px;display:flex;flex-direction:column;justify-content:flex-end}
+.page-banner-bg{position:absolute;inset:0;background-image:url('GreenWaterBanner.jpg');background-size:cover;background-position:center 50%;opacity:.75}
+.page-banner-overlay{position:absolute;inset:0;background:rgba(13,74,107,0.55)}
 .page-banner-content{position:relative;z-index:2}
 .page-banner h2{font-family:'Lora',serif;font-size:40px;color:#fff;margin-bottom:10px;font-weight:600}
 .page-banner p{font-size:18px;color:#daf0f5;line-height:1.75;max-width:640px}
 .section{padding:20px 48px 24px}
 .section+.section{border-top:1px solid #d0e8f0}
-.section-label{font-size:14px;font-weight:500;letter-spacing:2px;text-transform:uppercase;color:#4a90aa;margin-bottom:16px}
+.section-label{font-size:15px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:#4a90aa;margin-bottom:16px}
 .badge{font-size:11px;padding:3px 10px;border-radius:20px;font-weight:500;white-space:nowrap;background:#daf0f5;color:#0d4a6b}
 
 /* HERO */
@@ -45,17 +45,17 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .hero-content .bio{font-size:17px;color:#daf0f5;line-height:1.8;max-width:500px}
 
 /* RESEARCH BLOCKS */
-.research-block{display:grid;grid-template-columns:280px 1fr;gap:32px;padding:20px 0 24px;border-bottom:1.5px solid #c8e4ee;align-items:start}
+.research-block{display:grid;grid-template-columns:280px 1fr;gap:32px;padding:20px 0 24px;border-bottom:1.5px solid #c8e4ee;align-items:start;min-width:0}
 .research-block:last-child{border-bottom:none}
-.research-block.flip{grid-template-columns:1fr 300px}
+.research-block.flip{grid-template-columns:1fr 280px;min-width:0}
 .research-block.flip .research-img-wrap{order:2}
 .research-block.flip .research-text{order:1}
 .research-img{width:100%;height:210px;object-fit:cover;border-radius:8px;display:block}
 .research-img-caption{font-size:13px;color:#4a90aa;margin-top:7px;line-height:1.45}
-.research-text h3{font-family:'Lora',serif;font-size:22px;font-weight:600;color:#0d4a6b;margin-bottom:12px}
-.research-text p{font-size:17px;color:#2a5a72;line-height:1.8;margin-bottom:12px}
+.research-text h3{font-family:'Lora',serif;font-size:22px;font-weight:600;color:#0d4a6b;margin-bottom:12px;min-width:0}
+.research-text p{font-size:16px;color:#2a5a72;line-height:1.8;margin-bottom:12px}
 .research-text ul{margin:8px 0 12px 20px}
-.research-text ul li{font-size:17px;color:#2a5a72;line-height:1.7;margin-bottom:5px}
+.research-text ul li{font-size:16px;color:#2a5a72;line-height:1.7;margin-bottom:5px}
 .research-text .see-pubs{font-size:13px;color:#00a8c8;text-decoration:none;display:inline-block;margin-top:4px}
 .research-text .see-pubs:hover{text-decoration:underline}
 
@@ -64,7 +64,7 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .year-head:first-child{margin-top:0}
 .pub-entry{padding:6px 0;border-bottom:1px solid #e4f0f5}
 .pub-entry:last-child{border-bottom:none}
-.pub-full{font-size:17px;color:#2a5a72;line-height:1.75;margin-bottom:6px}
+.pub-full{font-size:16px;color:#2a5a72;line-height:1.75;margin-bottom:6px}
 .pub-full strong{color:#0d4a6b}
 .pub-full a{color:#00a8c8;text-decoration:none;font-size:15px;display:inline-block;margin-top:3px}
 .pub-full a:hover{text-decoration:underline}
@@ -75,7 +75,7 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .news-item{padding:8px 0;border-bottom:1px solid #d0e8f0;display:flex;gap:22px}
 .news-item:last-child{border-bottom:none}
 .news-year{font-size:13px;font-weight:500;color:#00a8c8;min-width:42px;flex-shrink:0;padding-top:2px}
-.news-text{font-size:17px;color:#2a5a72;line-height:1.7}
+.news-text{font-size:16px;color:#2a5a72;line-height:1.7}
 .news-img{width:100%;border-radius:8px;object-fit:cover;height:230px}
 .news-img-caption{font-size:12px;color:#4a90aa;margin-top:7px}
 
@@ -86,7 +86,7 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .contact-block a:hover{text-decoration:underline}
 
 /* GRAD */
-.grad-photo{width:100%;max-height:320px;object-fit:cover;object-position:center 70%;display:block}
+.grad-photo{width:100%;max-height:320px;object-fit:cover;object-position:center 85%;display:block}
 .students-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px}
 .student{background:#fff;border:1.5px solid #00a8c8;border-radius:10px;padding:20px;text-align:center}
 .avatar{width:44px;height:44px;border-radius:50%;background:#0d4a6b;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:12px;font-weight:500;color:#7dcfe0}
@@ -94,7 +94,7 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .student-topic{font-size:14px;color:#4a7a92;line-height:1.55}
 
 /* UNDERGRADUATE THESES */
-.ug-full{font-size:17px;color:#2a5a72;line-height:1.75}
+.ug-full{font-size:16px;color:#2a5a72;line-height:1.75}
 .ug-full em{font-style:italic}
 
 /* TEACHING */
@@ -106,7 +106,7 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 .field-img-wrap{display:flex;flex-direction:column;gap:8px}
 .field-img{width:100%;height:170px;object-fit:cover;border-radius:8px;display:block}
 .field-text h3{font-size:20px;font-weight:500;color:#0d4a6b;margin-bottom:10px}
-.field-text p{font-size:17px;color:#2a5a72;line-height:1.8}
+.field-text p{font-size:16px;color:#2a5a72;line-height:1.8}
 
 /* MEDIA */
 .audio-row{display:grid;grid-template-columns:200px 1fr;gap:22px;padding:14px 0;border-bottom:1px solid #e4f0f5;align-items:center}
@@ -123,7 +123,7 @@ nav{background:#0d4a6b;padding:0 48px;display:flex;align-items:center;justify-co
 /* ABOUT */
 .about-intro{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:start;margin-bottom:28px}
 .about-intro-img{width:100%;border-radius:8px;object-fit:cover;height:270px}
-.about-intro-text{font-size:17px;color:#2a5a72;line-height:1.85}
+.about-intro-text{font-size:16px;color:#2a5a72;line-height:1.85}
 .about-two{display:grid;grid-template-columns:1fr 1fr;gap:36px}
 .about-block{margin-bottom:20px}
 .about-block h3{font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:2px;color:#4a90aa;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #d0e8f0}
@@ -236,7 +236,7 @@ footer a:hover{color:#fff}
         
       </div>
       <div class="research-img-wrap">
-        <img src="Tidy%20station.png" alt="Solar-powered PALS station on Tidy Island" class="research-img">
+        <img src="Tidy%20station.png" alt="Solar-powered PALS station on Tidy Island" class="research-img" style="object-position:left center">
         <div class="research-img-caption">Solar-powered PALS station installed on Tidy Island, Sarasota Bay</div>
       </div>
     </div>
@@ -657,7 +657,7 @@ footer a:hover{color:#fff}
       <a href="https://www.ncf.edu/departments/mimms/" target="_blank">MIMMS Program</a>
     </p>
     <a href="https://www.ncf.edu" target="_blank" style="display:inline-block;background:rgba(255,255,255,0.92);border-radius:8px;padding:8px 14px;line-height:0">
-      <img src="NCF Logo.jpg" alt="New College of Florida" style="height:44px;width:auto;display:block">
+      <img src="NCF%20Logo.jpg" alt="New College of Florida" style="height:44px;width:auto;display:block">
     </a>
   </div>
 </footer>
