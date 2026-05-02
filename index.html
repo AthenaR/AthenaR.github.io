@@ -1,0 +1,1738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Athena Rycyk, Ph.D.   Rycyk Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500;1,8..60,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0c2a2e;
+    --ink-2: #244347;
+    --muted: #5a7e80;
+    --line: #d6e4e1;
+    --line-2: #ebf3f0;
+    --bg: #f7faf6;
+    --bg-2: #e8efe6;
+    --teal: #0e6b73;
+    --teal-deep: #073e44;
+    --aqua: #2fb6b4;
+    --aqua-pale: #cdeae7;
+    --moss: #4a7a3e;
+    --accent: #c89a3d;
+    --paper: #ffffff;
+    --maxw: 1180px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  a:hover { color: var(--accent); }
+
+  /* PAGE SWITCHING */
+  .page { display: none; }
+  .page.on { display: block; }
+
+  /* NAV */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(5,34,48,0.96);
+    backdrop-filter: blur(8px);
+    color: #eaf2f4;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .nav-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+  }
+  .brand .lab { color: #7fd9d2; font-weight: 400; }
+  .nav-links {
+    display: flex;
+    gap: 22px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+  .nav-links a {
+    color: #cfdde2;
+    text-decoration: none;
+    padding: 4px 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    cursor: pointer;
+  }
+  .nav-links a:hover, .nav-links a.active {
+    color: #fff;
+    border-bottom-color: #7fd9d2;
+  }
+
+  /* SHARED */
+  section { border-bottom: 1px solid var(--line); }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 72px 32px; }
+  .section-head {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: baseline;
+    margin-bottom: 48px;
+  }
+  .section-eyebrow {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 19px;
+    letter-spacing: 0.01em;
+    font-style: italic;
+    color: var(--teal);
+    padding-top: 8px;
+  }
+  .section-title {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(28px, 3.5vw, 38px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin: 0 0 12px;
+    color: var(--ink);
+  }
+  .section-lede, .section-blurb {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    color: var(--ink-2);
+    max-width: 60ch;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* PAGE HEADER (inner pages) */
+  .pagehead {
+    background: var(--teal-deep);
+    color: #eaf6f3;
+    padding: 52px 32px 44px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .pagehead-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0,1.5fr) minmax(0,1fr);
+    gap: 56px;
+    align-items: end;
+  }
+  .pagehead .eyebrow {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    color: #8fdcd5;
+    margin-bottom: 14px;
+  }
+  .pagehead h1 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(40px, 5vw, 64px);
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+    margin: 0 0 18px;
+    color: #fff;
+  }
+  .pagehead .lede {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.5;
+    color: #cfeae5;
+    max-width: 56ch;
+    font-weight: 400;
+  }
+  .pagehead .toc {
+    border-left: 1px solid rgba(143,220,213,0.35);
+    padding-left: 22px;
+    color: #b9d6d2;
+    font-size: 14px;
+  }
+  .pagehead .toc-label {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    font-style: italic;
+    color: #8fdcd5;
+    margin-bottom: 10px;
+  }
+  .pagehead .toc a {
+    display: block;
+    padding: 5px 0;
+    text-decoration: none;
+    color: #d4ebe7;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+    width: fit-content;
+    cursor: pointer;
+  }
+  .pagehead .toc a:hover { color: #fff; border-bottom-color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 560px;
+    color: #eef7f5;
+    background-color: var(--teal-deep);
+    background-image:
+      linear-gradient(180deg, rgba(7,62,68,0.32) 0%, rgba(7,62,68,0.82) 100%),
+      url('Spring.jpg');
+    background-size: auto, cover;
+    background-position: center, center 88%;
+    background-repeat: no-repeat;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 20% 0%, rgba(127,217,210,0.18), transparent 60%),
+                radial-gradient(ellipse at 80% 100%, rgba(7,62,68,0.4), transparent 65%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    position: relative; z-index: 1;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 80px 32px 72px;
+    display: grid;
+    grid-template-columns: minmax(0,1.4fr) minmax(0,1fr);
+    gap: 64px;
+    align-items: end;
+  }
+  .eyebrow {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    font-style: italic;
+    color: #8fdcd5;
+    margin-bottom: 18px;
+  }
+  h1.name {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(44px, 5.4vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin: 0 0 14px;
+  }
+  .role {
+    font-size: 17px;
+    font-weight: 500;
+    color: #d3e7e3;
+    margin: 0 0 4px;
+  }
+  .affil {
+    font-size: 14px;
+    color: #9fc2bd;
+    margin: 0 0 28px;
+  }
+  .affil .dot { color: #5d9089; margin: 0 8px; }
+  .bio {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #e6f0ee;
+    max-width: 56ch;
+    margin: 0 0 22px;
+  }
+  .hero-side { display: flex; flex-direction: column; gap: 14px; padding-bottom: 6px; }
+  .side-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 2px solid #7fd9d2;
+    padding: 16px 18px 18px;
+    border-radius: 2px;
+    backdrop-filter: blur(2px);
+  }
+  .side-card .label {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    font-style: italic;
+    color: #8fdcd5;
+    margin-bottom: 6px;
+  }
+  .side-card .body { font-size: 14px; line-height: 1.5; color: #e6f0ee; }
+  .side-card .body strong { color: #fff; font-weight: 600; }
+
+  /* RESEARCH AREAS */
+  .areas { display: grid; grid-template-columns: 1fr; gap: 0; }
+  .area {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    padding: 36px 0;
+    border-top: 1px solid var(--line);
+  }
+  .area:first-child { border-top: 1px solid var(--ink); }
+  .area:last-child { border-bottom: 1px solid var(--line); }
+  .area-num {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    padding-top: 10px;
+    font-weight: 500;
+  }
+  .area-body { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); gap: 40px; align-items: start; }
+  .area h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0 0 14px;
+    color: var(--ink);
+  }
+  .area p { margin: 0 0 14px; color: var(--ink-2); font-size: 15.5px; line-height: 1.6; }
+  .area .current {
+    margin-top: 18px;
+    padding: 14px 16px;
+    background: var(--bg-2);
+    border-left: 2px solid var(--accent);
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+  .area .current .ck {
+    display: block;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .area .pubs { border-left: 1px solid var(--line); padding-left: 28px; }
+  .area-figure { margin: 0 0 16px; border: 1px solid var(--line); background: var(--bg-2); overflow: hidden; }
+  .area-figure img { display: block; width: 100%; height: 180px; object-fit: cover; }
+  .area-figure figcaption {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    font-style: italic;
+    color: var(--muted);
+    padding: 8px 12px;
+    background: #fff;
+    border-top: 1px solid var(--line);
+  }
+  .area .pubs-label {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 14px;
+    font-weight: 500;
+  }
+  .area .pub { font-size: 13.5px; line-height: 1.5; color: var(--ink-2); margin: 0 0 14px; }
+  .area .pub:last-child { margin-bottom: 0; }
+  .area .pub a { color: var(--teal); text-decoration: none; border-bottom: 1px solid var(--aqua-pale); }
+  .area .pub a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .area .pub .journal { font-style: italic; color: var(--muted); }
+  .area .pub .tag {
+    display: inline-block;
+    margin-left: 4px;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    color: var(--accent);
+    letter-spacing: 0.01em;
+  }
+
+  /* UPCOMING */
+  .upcoming {
+    background:
+      linear-gradient(180deg, rgba(7,62,68,0.92) 0%, rgba(7,62,68,0.96) 100%),
+      radial-gradient(ellipse at 75% 20%, rgba(47,182,180,0.22), transparent 60%),
+      var(--teal-deep);
+    color: #e6f0ee;
+  }
+  .upcoming .section-title { color: #fff; }
+  .upcoming .section-eyebrow { color: #8fdcd5; }
+  .upcoming .section-lede { color: #c2d9d4; }
+  .upcoming-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 2px solid var(--accent);
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: minmax(0,1.3fr) minmax(0,1fr);
+    gap: 40px;
+    align-items: start;
+  }
+  .upcoming-card h4 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 22px;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+  .upcoming-card p { margin: 0; font-size: 15px; line-height: 1.6; color: #c8d8db; }
+  .upcoming-meta { border-left: 1px solid rgba(255,255,255,0.12); padding-left: 28px; font-size: 13.5px; line-height: 1.6; }
+  .upcoming-meta .row { margin-bottom: 12px; }
+  .upcoming-meta .row:last-child { margin-bottom: 0; }
+  .upcoming-meta .k {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    font-style: italic;
+    color: #8fdcd5;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .upcoming-meta .v { color: #e6f0ee; }
+
+  /* NEWS */
+  .recent { background: var(--bg-2); }
+  .news-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+  .news { background: var(--paper); border: 1px solid var(--line); padding: 24px 22px 22px; }
+  .news .yr {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+    font-style: italic;
+    color: var(--accent);
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+  .news .h {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.25;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 10px;
+    letter-spacing: -0.005em;
+  }
+  .news .d { font-size: 14px; line-height: 1.55; color: var(--ink-2); margin: 0; }
+
+  /* CONTACT */
+  .contact-wrap { display: grid; grid-template-columns: 200px 1fr; gap: 48px; align-items: start; }
+  .contact-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; font-size: 14.5px; line-height: 1.55; }
+  .contact-grid .k {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .contact-grid a { color: var(--teal); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .contact-grid a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* PUBLICATIONS */
+  .pub-section { padding: 40px 32px 16px; }
+  .pub-section-inner { max-width: var(--maxw); margin: 0 auto; }
+  .highlight-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; }
+  .h-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 26px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  .h-card:hover { border-color: var(--aqua); transform: translateY(-2px); box-shadow: 0 6px 18px -10px rgba(14,107,115,0.4); }
+  .h-card .h-tag {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    font-style: italic;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .h-card .h-tag .yr { color: var(--muted); font-style: normal; font-size: 13px; }
+  .h-card h3 {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 1.25;
+    margin: 0;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .h-card .why { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5; color: var(--ink-2); margin: 0; }
+  .h-card .meta { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin-top: auto; }
+  .h-card .meta strong { color: var(--ink-2); font-weight: 500; }
+  .h-card .meta em { color: var(--ink-2); }
+  .h-card .doi { margin-top: 6px; font-size: 13px; }
+  .h-card .doi a { color: var(--teal); text-decoration: none; border-bottom: 1px solid var(--aqua-pale); transition: color 0.15s, border-color 0.15s; }
+  .h-card .doi a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .year-block {
+    border-top: 1px solid var(--line);
+    padding: 22px 0 16px;
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 28px;
+  }
+  .year-block:first-of-type { border-top: 1px solid var(--ink-2); }
+  .year-label {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: -0.01em;
+    line-height: 1;
+    padding-top: 4px;
+  }
+  .year-label .small {
+    display: block;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--muted);
+    margin-top: 6px;
+    letter-spacing: 0.02em;
+  }
+  .pub-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 22px; }
+  .pub {
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+  .pub .authors { color: var(--ink); }
+  .pub .authors strong { font-weight: 700; color: var(--ink); }
+  .pub .title { color: var(--ink); font-weight: 500; }
+  .pub .venue { font-style: italic; color: var(--ink-2); }
+  .pub .vol { color: var(--muted); }
+  .pub .doi { display: block; margin-top: 4px; font-size: 14px; }
+  .pub .doi a { color: var(--teal); text-decoration: none; border-bottom: 1px solid var(--aqua-pale); transition: color 0.15s, border-color 0.15s; }
+  .pub .doi a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .pub .note {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11.5px;
+    letter-spacing: 0.02em;
+    color: var(--accent);
+    background: rgba(200,154,61,0.08);
+    border: 1px solid rgba(200,154,61,0.28);
+    border-radius: 999px;
+    vertical-align: 2px;
+    font-style: normal;
+  }
+  .datasets-wrap {
+    background: var(--bg-2);
+    padding: 44px 32px;
+    margin-top: 28px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .datasets-wrap .pub-section-inner { max-width: var(--maxw); margin: 0 auto; }
+  .dataset-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+  .dataset-meta { border-right: 1px solid var(--line); padding-right: 24px; }
+  .dataset-meta .k { font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; font-style: italic; color: var(--muted); margin-bottom: 4px; letter-spacing: 0.02em; }
+  .dataset-meta .v { font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; color: var(--ink); margin-bottom: 14px; }
+  .dataset-card h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 22px; margin: 0 0 12px; color: var(--ink); line-height: 1.3; }
+  .dataset-card .authors { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; color: var(--ink-2); margin-bottom: 8px; }
+  .dataset-card .authors strong { color: var(--ink); }
+  .dataset-card .desc { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.6; color: var(--ink-2); margin: 0 0 12px; }
+  .dataset-card .doi a { color: var(--teal); text-decoration: none; border-bottom: 1px solid var(--aqua-pale); font-size: 14px; }
+  .dataset-card .doi a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .pubs-foot { max-width: var(--maxw); margin: 0 auto; padding: 24px 32px 56px; color: var(--muted); font-size: 14px; font-family: 'Source Serif 4', Georgia, serif; font-style: italic; }
+
+  /* GRADUATE PROGRAM */
+  .gp-section { padding: 44px 32px 16px; }
+  .gp-section-inner { max-width: var(--maxw); margin: 0 auto; }
+  .program-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 48px; align-items: start; margin-bottom: 8px; }
+  .program-grid p { font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.65; color: var(--ink-2); margin: 0 0 16px; }
+  .program-stats { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 24px 26px; }
+  .program-stat { padding: 14px 0; border-bottom: 1px solid var(--line-2); }
+  .program-stat:last-child { border-bottom: none; padding-bottom: 4px; }
+  .program-stat:first-child { padding-top: 4px; }
+  .program-stat .k { font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; letter-spacing: 0.02em; font-style: italic; color: var(--muted); margin-bottom: 4px; }
+  .program-stat .v { font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; color: var(--ink); line-height: 1.35; }
+  .program-stat .v a { color: var(--teal); text-decoration: none; border-bottom: 1px solid var(--aqua-pale); }
+  .program-stat .v a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .student-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; margin-bottom: 8px; }
+  .student-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 24px 26px;
+    display: grid;
+    grid-template-columns: 76px 1fr;
+    gap: 20px;
+    align-items: start;
+    transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+  }
+  .student-card:hover { border-color: var(--aqua); transform: translateY(-2px); box-shadow: 0 6px 18px -10px rgba(14,107,115,0.4); }
+  .student-avatar {
+    width: 76px; height: 76px; border-radius: 50%;
+    background: linear-gradient(140deg, var(--teal) 0%, var(--teal-deep) 100%);
+    color: #cfeae5;
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 26px; font-weight: 500;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .student-card h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 21px; line-height: 1.2; margin: 0 0 6px; color: var(--ink); letter-spacing: -0.005em; }
+  .student-card .s-role { font-family: 'Source Serif 4', Georgia, serif; font-size: 13.5px; font-style: italic; color: var(--muted); margin: 0 0 10px; letter-spacing: 0.01em; }
+  .student-card .project { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5; color: var(--ink-2); margin: 0; }
+  .student-card.tba .project { color: var(--muted); font-style: italic; }
+  .prospective { background: var(--bg-2); margin-top: 36px; padding: 56px 32px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .prospective-inner { max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 56px; align-items: start; }
+  .prospective h2 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: clamp(28px,3vw,36px); letter-spacing: -0.01em; margin: 0 0 16px; color: var(--ink); }
+  .prospective p { font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; line-height: 1.65; color: var(--ink-2); margin: 0 0 14px; max-width: 60ch; }
+  .prospective .interests { list-style: none; margin: 8px 0 18px; padding: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 16.5px; line-height: 1.7; color: var(--ink-2); max-width: 56ch; }
+  .prospective .interests li { padding-left: 18px; position: relative; }
+  .prospective .interests li::before { content: "·"; position: absolute; left: 4px; top: 0; color: var(--accent); font-weight: 700; font-size: 22px; line-height: 1.4; }
+  .cta-card { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 26px 28px; }
+  .cta-card .label { font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; letter-spacing: 0.02em; font-style: italic; color: var(--muted); margin-bottom: 6px; }
+  .cta-card h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 20px; margin: 0 0 10px; color: var(--ink); }
+  .cta-card p { font-family: 'Source Serif 4', Georgia, serif; font-size: 15.5px; line-height: 1.55; color: var(--ink-2); margin: 0 0 14px; }
+  .cta-row { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+  .cta-btn { display: inline-flex; align-items: center; justify-content: space-between; padding: 12px 16px; text-decoration: none; font-family: 'Source Serif 4', Georgia, serif; font-size: 15.5px; border-radius: 6px; transition: background 0.15s, border-color 0.15s, color 0.15s; }
+  .cta-btn.primary { background: var(--teal); color: #fff; border: 1px solid var(--teal); }
+  .cta-btn.primary:hover { background: var(--teal-deep); border-color: var(--teal-deep); color: #fff; }
+  .cta-btn.ghost { background: transparent; color: var(--teal); border: 1px solid var(--line); }
+  .cta-btn.ghost:hover { border-color: var(--teal); color: var(--teal-deep); }
+  .cta-btn .arrow { font-style: italic; font-family: 'Source Serif 4', Georgia, serif; font-weight: 400; margin-left: 14px; opacity: 0.85; }
+
+  /* UNDERGRADUATE THESES */
+  .thesis-year-block { border-top: 1px solid var(--line); padding: 20px 0 12px; display: grid; grid-template-columns: 110px 1fr; gap: 28px; }
+  .thesis-year-block:first-of-type { border-top: 1px solid var(--ink-2); }
+  .thesis-year-label { font-family: 'Source Serif 4', Georgia, serif; font-size: 28px; font-weight: 600; color: var(--teal); letter-spacing: -0.01em; line-height: 1; padding-top: 4px; }
+  .thesis-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  .thesis-item { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.55; color: var(--ink-2); }
+  .thesis-item .t-author { color: var(--ink); font-weight: 500; }
+  .thesis-item .t-title { color: var(--ink-2); }
+
+  /* TEACHING */
+  .course-cols { display: grid; grid-template-columns: repeat(2,1fr); gap: 0; }
+  .course-item { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.5; color: var(--ink-2); padding: 10px 0; border-bottom: 1px solid var(--line-2); }
+  .course-item.new-course { color: var(--teal); font-weight: 600; }
+  .field-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 22px;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    transition: border-color 0.18s;
+  }
+  .field-card:hover { border-color: var(--aqua); }
+  .field-card:last-child { margin-bottom: 0; }
+  .field-imgs { display: grid; grid-template-rows: 1fr 1fr; }
+  .field-img { width: 100%; height: 150px; object-fit: cover; display: block; }
+  .field-body { padding: 24px 28px; }
+  .field-body h3 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 20px; line-height: 1.3; margin: 0 0 12px; color: var(--ink); letter-spacing: -0.005em; }
+  .field-body p { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; line-height: 1.65; color: var(--ink-2); margin: 0; }
+
+  /* MEDIA */
+  .audio-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 22px; margin-bottom: 8px; }
+  .audio-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .audio-card .spectrogram { width: 100%; height: 130px; object-fit: cover; display: block; background: var(--bg-2); }
+  .audio-card .audio-body { padding: 18px 20px; }
+  .audio-card h4 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 18px; line-height: 1.25; margin: 0 0 6px; color: var(--ink); }
+  .audio-card p { font-size: 14px; line-height: 1.55; color: var(--ink-2); margin: 0 0 12px; }
+  .audio-card audio { width: 100%; }
+  .media-link-list { list-style: none; margin: 0; padding: 0; }
+  .media-link-item { border-bottom: 1px solid var(--line-2); }
+  .media-link-item:first-child { border-top: 1px solid var(--ink-2); }
+  .media-link-item a {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    padding: 14px 0;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.45;
+    transition: color 0.15s;
+  }
+  .media-link-item a:hover { color: var(--teal); }
+  .media-link-item .ml-source { font-size: 13px; font-style: italic; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+  .media-section-head { font-family: 'Source Serif 4', Georgia, serif; font-size: 17px; font-style: italic; color: var(--teal); margin: 40px 0 14px; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: minmax(0,1.4fr) minmax(0,1fr); gap: 56px; align-items: start; margin-bottom: 48px; }
+  .about-bio { font-family: 'Source Serif 4', Georgia, serif; font-size: 18px; line-height: 1.7; color: var(--ink-2); }
+  .about-bio p { margin: 0 0 18px; }
+  .about-bio p:last-child { margin-bottom: 0; }
+  .about-sidebar { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 24px 26px; }
+  .about-stat { padding: 14px 0; border-bottom: 1px solid var(--line-2); }
+  .about-stat:first-child { padding-top: 4px; }
+  .about-stat:last-child { border-bottom: none; padding-bottom: 4px; }
+  .about-stat .k { font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; letter-spacing: 0.02em; font-style: italic; color: var(--muted); margin-bottom: 4px; }
+  .about-stat .v { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; color: var(--ink); line-height: 1.4; }
+  .edu-block { border-top: 1px solid var(--line); padding: 24px 0; display: grid; grid-template-columns: 120px 1fr; gap: 28px; }
+  .edu-block:first-of-type { border-top: 1px solid var(--ink-2); }
+  .edu-year { font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; font-weight: 600; color: var(--teal); padding-top: 4px; }
+  .edu-body h4 { font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; font-size: 19px; margin: 0 0 4px; color: var(--ink); }
+  .edu-body .inst { font-family: 'Source Serif 4', Georgia, serif; font-size: 15px; font-style: italic; color: var(--muted); margin-bottom: 6px; }
+  .edu-body .thesis { font-family: 'Source Serif 4', Georgia, serif; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+  .grant-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 18px; }
+  .grant-item { display: grid; grid-template-columns: 180px 1fr; gap: 20px; padding-bottom: 18px; border-bottom: 1px solid var(--line-2); font-family: 'Source Serif 4', Georgia, serif; }
+  .grant-item:last-child { border-bottom: none; }
+  .grant-amount { font-size: 17px; font-weight: 600; color: var(--teal); }
+  .grant-source { font-size: 13px; font-style: italic; color: var(--muted); margin-top: 2px; }
+  .grant-desc { font-size: 15.5px; line-height: 1.55; color: var(--ink-2); }
+
+  /* FOOTER */
+  footer {
+    background: var(--teal-deep);
+    color: #9ebab5;
+    font-size: 13px;
+  }
+  footer .wrap {
+    padding: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+  footer a { color: #d3e7e3; text-decoration: none; }
+  footer a:hover { color: #fff; }
+  footer img { height: 44px; width: auto; display: block; background: rgba(255,255,255,0.9); border-radius: 6px; padding: 6px 10px; }
+
+  /* MOBILE NAV */
+  .nav-burger {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px 8px;
+    line-height: 1;
+  }
+  @media (max-width: 900px) {
+    .nav-burger { display: block; }
+    .hero {
+      background-image: none;
+      background-color: #0a3d45;
+    }
+
+    .hero-inner { grid-template-columns: 1fr; gap: 36px; padding: 56px 24px 48px; }
+    .section-head, .area, .contact-wrap { grid-template-columns: 1fr; gap: 18px; }
+    .area-body { grid-template-columns: 1fr; gap: 24px; }
+    .area .pubs { border-left: 0; border-top: 1px solid var(--line); padding: 20px 0 0; }
+    .news-grid, .contact-grid { grid-template-columns: 1fr; }
+    .upcoming-card { grid-template-columns: 1fr; }
+    .upcoming-meta { border-left: 0; border-top: 1px solid rgba(255,255,255,0.12); padding: 20px 0 0; }
+    .wrap { padding: 48px 20px; }
+    .pagehead-inner { grid-template-columns: 1fr; gap: 32px; }
+    .pagehead .toc { border-left: none; border-top: 1px solid rgba(143,220,213,0.25); padding-left: 0; padding-top: 18px; }
+    .highlight-grid, .student-grid, .audio-grid { grid-template-columns: 1fr; }
+    .year-block, .thesis-year-block, .edu-block { grid-template-columns: 1fr; gap: 12px; }
+    .program-grid, .prospective-inner, .about-grid { grid-template-columns: 1fr; }
+    .field-card { grid-template-columns: 1fr; }
+    .field-imgs { grid-template-rows: unset; grid-template-columns: 1fr 1fr; }
+    .course-cols { grid-template-columns: 1fr; }
+    .dataset-card { grid-template-columns: 1fr; }
+    .dataset-meta { border-right: none; border-bottom: 1px solid var(--line); padding-right: 0; padding-bottom: 18px; }
+    .grant-item { grid-template-columns: 1fr; gap: 6px; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: rgba(5,34,48,0.98);
+      flex-direction: column;
+      gap: 0;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 100;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 12px 24px; border-bottom: none; font-size: 15px; }
+    .nav-inner { position: relative; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="brand" onclick="go('home')">Rycyk <span class="lab">Lab</span></div>
+    <button class="nav-burger" onclick="toggleMenu()" aria-label="Menu">&#9776;</button>
+    <div class="nav-links" id="nav-links">
+      <a class="active" onclick="go('home');closeMenu()">Home</a>
+      <a onclick="go('pubs');closeMenu()">Publications</a>
+      <a onclick="go('grad');closeMenu()">Graduate Program</a>
+      <a onclick="go('ugtheses');closeMenu()">Undergraduate Theses</a>
+      <a onclick="go('teaching');closeMenu()">Teaching</a>
+      <a onclick="go('media');closeMenu()">Sounds</a>
+      <a onclick="go('about');closeMenu()">About</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════ HOME ═══════════════════════════════ -->
+<div id="home" class="page on">
+
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Manatee &amp; Acoustic Ecology Lab</div>
+      <h1 class="name">Athena Rycyk, Ph.D.</h1>
+      <p class="role">Associate Professor of Marine Mammal Science and Biology</p>
+      <p class="affil">New College of Florida<span class="dot">·</span>M.S. in Marine Mammal Science Program</p>
+      <p class="bio">I am a marine bioacoustician, machine learning researcher, and conservation ecologist. My work spans passive acoustic monitoring of marine mammals, convolutional neural network design for automated detection across multi-location acoustic datasets, and conservation research that draws on cognitive frameworks to understand how animals respond to anthropogenic threats. I work primarily with Florida and African manatees, with active collaborations across the United States, Cameroon, Nigeria, Senegal, Benin, and Belize.</p>
+    </div>
+    <aside class="hero-side">
+      <div class="side-card">
+        <div class="label">2026</div>
+        <div class="body">Three new publications including manatee cognition as a conservation tool (<em>Marine Mammal Science</em>) and a deep learning pipeline for Greater Caribbean manatee detection (<em>Applied Sciences</em>).</div>
+      </div>
+      <div class="side-card">
+        <div class="label">2025</div>
+        <div class="body"><strong>$331,274 NOAA Sea Grant</strong> awarded to develop protected species monitoring for offshore aquaculture in the Gulf.</div>
+      </div>
+      <div class="side-card">
+        <div class="label">2025</div>
+        <div class="body">Bioacoustic dataset of African and Florida manatee vocalizations for machine learning applications published on the Environmental Data Initiative.</div>
+      </div>
+      <div class="side-card">
+        <div class="label">2025</div>
+        <div class="body">Four co-authored presentations at the 8th Manatee Research Symposium, including new findings on manatee broadband clicks.</div>
+      </div>
+    </aside>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow">/ Research</div>
+      <div>
+        <h2 class="section-title">Five threads, one question</h2>
+        <p class="section-lede">How do marine mammals, especially manatees, perceive their acoustic worlds, and how can we use that to monitor and protect them at scale?</p>
+      </div>
+    </div>
+    <div class="areas">
+
+      <article class="area">
+        <div class="area-num">Acoustic monitoring</div>
+        <div class="area-body">
+          <div>
+            <h3>Passive Acoustic Monitoring &amp; Abundance Estimation</h3>
+            <p>Acoustic methods offer a non-invasive way to monitor manatee presence and abundance across large areas. The lab has developed PAM protocols for Florida manatees, including abundance estimation from acoustic cue rates.</p>
+            <div class="current">
+              <span class="ck">Current work</span>
+              Developing and validating an open-source acoustic abundance estimator for Florida manatees from individually-distinct vocalizations, with concurrent calf-presence detection from F<sub>0</sub> contour shape. Detection of manatee broadband clicks and chewing sounds at seagrass restoration sites.
+            </div>
+          </div>
+          <div class="pubs">
+            <figure class="area-figure">
+              <img src="ManateeSpectrogram.png" alt="Solar-powered PALS station on Tidy Island" style="object-position:0% center">
+              <figcaption>PALS station, Tidy Island, Sarasota Bay</figcaption>
+            </figure>
+            <div class="pubs-label">Key publications</div>
+            <p class="pub">Rycyk, A.M., Berchem, C., Marques, T.A. (2022). Estimating Florida manatee abundance using passive acoustic methods. <span class="journal">JASA Express Letters</span>, 2(5). <a href="https://doi.org/10.1121/10.0010495" target="_blank">doi</a></p>
+            <p class="pub">Rycyk, A.M. &amp; Tyson Moore, R.B. (co-first), Wells, R.S., et&nbsp;al. (2020). PALS show rapid onset of ecological effects of harmful algal blooms in real time. <span class="journal">Scientific Reports</span>, 10:17863. <a href="https://doi.org/10.1038/s41598-020-74647-z" target="_blank">doi</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="area">
+        <div class="area-num">West Africa</div>
+        <div class="area-body">
+          <div>
+            <h3>African Manatee Bioacoustics</h3>
+            <p>African manatees (<em>Trichechus senegalensis</em>) are elusive and threatened across their range in 21 countries, the least-studied manatee species, including acoustically. In collaboration with researchers in Cameroon, Nigeria, Senegal, and Benin, the lab produced the first characterization of African manatee vocalizations   work conducted in Cameroon   and the first CNN-based automated detector for the species.</p>
+            <div class="current">
+              <span class="ck">Current work</span>
+              Characterizing and monitoring vocalizations across populations in Cameroon, Nigeria, Senegal, and Benin; documenting <em>giant salvinia</em> impacts on manatee habitat in Lake Ossa; expanding passive acoustic monitoring across the species' range.
+            </div>
+          </div>
+          <div class="pubs">
+            <figure class="area-figure">
+              <img src="CameroonClinton.jpg" alt="Passive acoustic recorder deployment in Lake Ossa, Cameroon">
+              <figcaption>PAM deployment, Lake Ossa, Cameroon (photo: Clinton Factheu)</figcaption>
+            </figure>
+            <div class="pubs-label">Key publications</div>
+            <p class="pub">Rycyk, A., Bolaji, D., Factheu, C., Takoukam, A. (2022). Using transfer learning with a CNN to detect African manatee vocalizations. <span class="journal">JASA Express Letters</span>, 2(12). <a href="https://doi.org/10.1121/10.0016543" target="_blank">doi</a> <span class="tag">Editor's Pick &middot; cover</span></p>
+            <p class="pub">Rycyk, A., Factheu, C., Ramos, E.A., et&nbsp;al. (2021). First characterization of vocalizations and PAM of the vulnerable African manatee. <span class="journal">J. Acoust. Soc. Am.</span>, 150. <a href="https://doi.org/10.1121/10.0006734" target="_blank">doi</a></p>
+            <p class="pub">Factheu, C., Rycyk, A., et&nbsp;al. (2023). Acoustic methods improve detection of the endangered African manatee. <span class="journal">Frontiers in Marine Science</span>, 9. <a href="https://doi.org/10.3389/fmars.2022.1032464" target="_blank">doi</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="area">
+        <div class="area-num">Machine learning</div>
+        <div class="area-body">
+          <div>
+            <h3>Machine Learning for Marine Mammal Detection</h3>
+            <p>The lab designs and trains convolutional neural networks using transfer learning to automate detection of marine mammal vocalizations across large, multi-location acoustic datasets.</p>
+            <div class="current">
+              <span class="ck">Current work</span>
+              Cross-location generalization of CNN detectors across seven sites in West Africa and Florida: location-specific noise injection combined with a BirdNET / MobileNet / PANNs ensemble recovers performance under domain shift (manuscript in preparation). Acoustic individual identification and calf vocalization detection for population monitoring.
+            </div>
+          </div>
+          <div class="pubs">
+            <figure class="area-figure">
+              <img src="Tidy%20station.png" alt="Spectrogram of Florida manatee vocalizations">
+              <figcaption>Spectrogram, Florida manatee vocalizations</figcaption>
+            </figure>
+            <div class="pubs-label">Key publications</div>
+            <p class="pub">Rycyk, A. et&nbsp;al. (2022). Transfer learning with a CNN for African manatee detection. <span class="journal">JASA Express Letters</span>, 2(12). <a href="https://doi.org/10.1121/10.0016543" target="_blank">doi</a></p>
+            <p class="pub">Quiros-Corella, F., Rycyk, A., Brady, B., Cubero-Pardo, P. (2026). Benchmarking an integrated deep learning pipeline for robust detection and individual counting of the Greater Caribbean manatee. <span class="journal">Applied Sciences</span>, 16(5):2446. <a href="https://doi.org/10.3390/app16052446" target="_blank">doi</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="area">
+        <div class="area-num">Soundscapes</div>
+        <div class="area-body">
+          <div>
+            <h3>Sarasota Bay Listening Network</h3>
+            <p>Sound travels farther and faster in water than in air, and many marine organisms use sound to communicate or sense their environment. The acoustic ecology of Sarasota Bay   its biological choruses, seasonal soundscape shifts, and responses to disturbance   is the focus of the <a href="https://sarasotadolphin.org/pals/" target="_blank">Sarasota Bay Listening Network</a>, which records the full underwater soundscape from solar-powered, land-based stations, capturing dolphin calls, manatee vocalizations, fish choruses, and vessel noise.</p>
+            <div class="current">
+              <span class="ck">Current work</span>
+              The network is expanding, with real-time detection of dolphins and manatees being tested across station deployments.
+            </div>
+          </div>
+          <div class="pubs">
+            <figure class="area-figure">
+              <img src="DolphinSmile.jpg" alt="Bottlenose dolphin, Sarasota Bay">
+              <figcaption>Bottlenose dolphin, Sarasota Bay</figcaption>
+            </figure>
+            <div class="pubs-label">Key publications</div>
+            <p class="pub">Rycyk, A.M. &amp; Tyson Moore, R.B. (co-first), Wells, R.S., et&nbsp;al. (2020). PALS show rapid onset of ecological effects of harmful algal blooms in real time. <span class="journal">Scientific Reports</span>, 10:17863. <a href="https://doi.org/10.1038/s41598-020-74647-z" target="_blank">doi</a></p>
+            <p class="pub">Longden, E.G., Gillespie, D., Mann, D.A., McHugh, K.A., Rycyk, A.M., et&nbsp;al. (2022). Comparison of the marine soundscape before and during the COVID-19 pandemic in Sarasota Bay. <span class="journal">J. Acoust. Soc. Am.</span>, 152. <a href="https://doi.org/10.1121/10.0015366" target="_blank">doi</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="area">
+        <div class="area-num">Cognition &amp; risk</div>
+        <div class="area-body">
+          <div>
+            <h3>Manatee-Boat Collisions</h3>
+            <p>Boat collisions account for a majority (53%) of adult Florida manatee mortality. As the reproductively active segment of the population, adults are central to the species' long-term persistence. The lab investigates how manatees behave during boat approaches, the acoustically complicated situations they face, and why they may fail to avoid vessels even when those vessels are audible, integrating laboratory and field studies through a cognitive framework.</p>
+            <div class="current">
+              <span class="ck">Current work</span>
+              Applying cognitive frameworks to understand avoidance failure; integrating cross-disciplinary findings to inform management of boat-collision risk.
+            </div>
+          </div>
+          <div class="pubs">
+            <figure class="area-figure">
+              <img src="ManateeFace.JPG" alt="Florida manatee">
+              <figcaption>Florida manatee (<em>Trichechus manatus latirostris</em>)</figcaption>
+            </figure>
+            <div class="pubs-label">Key publications</div>
+            <p class="pub">Bauer, G., Deutsch, C., Reep, R., Fellner, W., Gunnars, T., Cook, P., Harley, H., Rycyk, A. (2026). Cognition as a conservation tool: Florida manatees and boat strikes. <span class="journal">Marine Mammal Science</span>, 42(2), e70176. <a href="https://doi.org/10.1111/mms.70176" target="_blank">doi</a></p>
+            <p class="pub">Rycyk, A.M., Deutsch, C.J., Barlas, M.E., et&nbsp;al. (2018). Manatee behavioral responses to boats. <span class="journal">Marine Mammal Science</span>, 34. <a href="https://doi.org/10.1111/mms.12491" target="_blank">doi</a> <span class="tag">Top 10% downloaded 2018-19</span></p>
+            <p class="pub">Rycyk, A.M., Bauer, G.B., Wells, R.S., Gaspard III, J.C., Mann, D.A. (2022). Influence of background noise on Florida manatee detection of boat noise and vocalizations. <span class="journal">PLoS ONE</span>, 17(5). <a href="https://doi.org/10.1371/journal.pone.0268513" target="_blank">doi</a></p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="upcoming">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="section-eyebrow" style="color:#79c2d6;">/ Upcoming</div>
+      <div>
+        <h2 class="section-title">Opening a new direction</h2>
+        <p class="section-lede">An incoming research thread, developing a cost-effective, scalable monitoring plan for protected species at the Gulf's first offshore finfish net-pen project.</p>
+      </div>
+    </div>
+    <div class="upcoming-card">
+      <div>
+        <h4>Protected species monitoring for offshore aquaculture</h4>
+        <p>The lab will lead a study of how dolphins and other marine wildlife use offshore habitats around the <em>Velella Epsilon</em> project, the first offshore finfish net-pen of its kind in the Gulf, deployed approximately 45 miles southwest of Sarasota. Surveys before, during, and after the year-long deployment will characterize use of the site by bottlenose and Atlantic spotted dolphins and produce a scalable monitoring plan transferable to future offshore aquaculture projects. Conducted in collaboration with NOAA Fisheries and Ocean Era, Inc., with graduate student-led thesis components.</p>
+      </div>
+      <div class="upcoming-meta">
+        <div class="row"><span class="k">Award</span><span class="v">$331,274. NOAA Sea Grant</span></div>
+        <div class="row"><span class="k">Role</span><span class="v">Principal Investigator</span></div>
+        <div class="row"><span class="k">Partners</span><span class="v">NOAA Fisheries &middot; Ocean Era, Inc.</span></div>
+        <div class="row"><span class="k">Site</span><span class="v">Offshore of Sarasota, FL</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="contact-wrap">
+      <div class="section-eyebrow">/ Contact</div>
+      <div class="contact-grid">
+        <div>
+          <div class="k">Email</div>
+          <a href="mailto:arycyk@ncf.edu">arycyk@ncf.edu</a>
+        </div>
+        <div>
+          <div class="k">Office</div>
+          Caples Hall 203<br>
+          New College of Florida<br>
+          5800 Bay Shore Rd<br>
+          Sarasota, FL 34243
+        </div>
+        <div>
+          <div class="k">Phone</div>
+          (941) 487-4937
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- end home -->
+
+<!-- ═══════════════════════════════ PUBLICATIONS ═══════════════════════════════ -->
+<div id="pubs" class="page">
+
+<header class="pagehead">
+  <div class="pagehead-inner">
+    <div>
+      <div class="eyebrow">Peer-reviewed work</div>
+      <h1>Publications</h1>
+      <p class="lede">Peer-reviewed articles, conference papers, and published datasets in marine bioacoustics, machine learning for species detection, and conservation behavior.</p>
+    </div>
+    <nav class="toc">
+      <div class="toc-label">On this page</div>
+      <a href="#highlighted">Highlighted</a>
+      <a href="#in-press">In press &amp; accepted</a>
+      <a href="#articles">Peer-reviewed articles</a>
+      <a href="#datasets">Published datasets</a>
+    </nav>
+  </div>
+</header>
+
+<section class="pub-section" id="highlighted">
+  <div class="pub-section-inner">
+    <div class="section-eyebrow">Selected work</div>
+    <h2 class="section-title">Highlighted</h2>
+    <p class="section-blurb">Papers that capture the lab's main contributions across passive acoustic monitoring, machine learning for marine mammal detection, soundscape ecology, and conservation behavior.</p>
+    <div class="highlight-grid">
+      <article class="h-card">
+        <div class="h-tag">Cognition &amp; conservation <span class="yr">&middot; 2026</span></div>
+        <h3>Cognition as a Conservation Tool: A Case Study of Florida Manatees and Boat Strikes</h3>
+        <p class="why">Reframes the manatee-boat collision problem through learning, perception, and decision-making. Proposes cognitive frameworks as a complement to acoustic and behavioral approaches in conservation.</p>
+        <div class="meta">Bauer, G., Deutsch, C., Reep, R., Fellner, W., Gunnars, T., Cook, P., Harley, H., and <strong>Rycyk, A.</strong> &middot; <em>Marine Mammal Science</em>, 42(2), e70176</div>
+        <div class="doi"><a href="https://doi.org/10.1111/mms.70176" target="_blank">doi.org/10.1111/mms.70176</a></div>
+      </article>
+      <article class="h-card">
+        <div class="h-tag">Machine learning &middot; West Africa <span class="yr">&middot; 2022</span></div>
+        <h3>Using transfer learning with a CNN to detect African manatee vocalizations</h3>
+        <p class="why">First CNN-based automated detector for the vulnerable African manatee. <em>JASA Express Letters</em> Editor's Pick and journal cover.</p>
+        <div class="meta"><strong>Rycyk, A.</strong>, Bolaji, D., Factheu, C., and Takoukam, A. &middot; <em>JASA Express Letters</em>, 2(12), 121201 <span class="note">Editor's Pick &middot; Cover</span></div>
+        <div class="doi"><a href="https://doi.org/10.1121/10.0016543" target="_blank">doi.org/10.1121/10.0016543</a></div>
+      </article>
+      <article class="h-card">
+        <div class="h-tag">Acoustic monitoring <span class="yr">&middot; 2022</span></div>
+        <h3>Estimating Florida manatee abundance using passive acoustic methods</h3>
+        <p class="why">Acoustic cue-rate framework for non-invasive abundance estimation of Florida manatees from PAM data. Foundation for ongoing development of an open-source abundance estimator.</p>
+        <div class="meta"><strong>Rycyk, A. M.</strong>, Berchem, C., and Marques, T. A. &middot; <em>JASA Express Letters</em>, 2(5), 051202</div>
+        <div class="doi"><a href="https://doi.org/10.1121/10.0010495" target="_blank">doi.org/10.1121/10.0010495</a></div>
+      </article>
+      <article class="h-card">
+        <div class="h-tag">Soundscapes &middot; HABs <span class="yr">&middot; 2020</span></div>
+        <h3>Passive acoustic listening stations show rapid onset of ecological effects of harmful algal blooms in real time</h3>
+        <p class="why">Demonstrates that the Sarasota Bay PALS network can detect HAB-driven shifts in fish chorus composition before traditional surveys register them.</p>
+        <div class="meta"><strong>Rycyk, A. M.</strong> and Tyson Moore, R. B. (co-first authors), Wells, R. S., McHugh, K. A., Berens McCabe, E. J., and Mann, D. A. &middot; <em>Scientific Reports</em>, 10:17863 <span class="note">Co-first author</span></div>
+        <div class="doi"><a href="https://doi.org/10.1038/s41598-020-74647-z" target="_blank">doi.org/10.1038/s41598-020-74647-z</a></div>
+      </article>
+      <article class="h-card">
+        <div class="h-tag">Boat collisions <span class="yr">&middot; 2018</span></div>
+        <h3>Manatee behavioral responses to boats</h3>
+        <p class="why">First systematic field study of how Florida manatees behave when boats approach. Establishes the empirical basis for current cognitive and acoustic work on collision risk.</p>
+        <div class="meta"><strong>Rycyk, A. M.</strong>, Deutsch, C. J., Barlas, M. E., Hardy, S., Frisch, K., Leone, E. H., and Nowacek, D. P. &middot; <em>Marine Mammal Science</em>, 34: 924-962 <span class="note">Top 10% downloaded 2018-19</span></div>
+        <div class="doi"><a href="https://doi.org/10.1111/mms.12491" target="_blank">doi.org/10.1111/mms.12491</a></div>
+      </article>
+      <article class="h-card">
+        <div class="h-tag">West Africa <span class="yr">&middot; 2021</span></div>
+        <h3>First characterization of vocalizations and passive acoustic monitoring of the vulnerable African manatee</h3>
+        <p class="why">Establishes the baseline acoustic repertoire for a species with virtually no prior bioacoustic study. Enables all subsequent monitoring and detection work for the species.</p>
+        <div class="meta"><strong>Rycyk, A.</strong>, Factheu, C., Ramos, E. A., Brady, B., Kikuchi, M., Nations, H., Kapfer, K., Hampton, C., Garcia, E., and Takoukam Kamla, A. &middot; <em>J. Acoust. Soc. Am.</em>, 150, 3028-3037</div>
+        <div class="doi"><a href="https://doi.org/10.1121/10.0006734" target="_blank">doi.org/10.1121/10.0006734</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="pub-section" id="in-press">
+  <div class="pub-section-inner">
+    <div class="section-eyebrow">In press &amp; accepted</div>
+    <h2 class="section-title">Forthcoming</h2>
+    <div class="year-block">
+      <div class="year-label">2026<span class="small">in press</span></div>
+      <ul class="pub-list">
+        <li class="pub">
+          <span class="authors">Roy, T., Farmer, W., Jackson, S., Skripnikov, and <strong>Rycyk, A.</strong></span> (accepted).
+          <span class="title">Merging Threats, Merging Worlds: A Unified VR Simulation for Manatee Conservation.</span>
+          <span class="venue">IEEE International Conference on Advanced Learning Technologies.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="pub-section" id="articles">
+  <div class="pub-section-inner">
+    <div class="section-eyebrow">Full list</div>
+    <h2 class="section-title">Peer-reviewed articles</h2>
+
+    <div class="year-block">
+      <div class="year-label">2026</div>
+      <ul class="pub-list">
+        <li class="pub">
+          <span class="authors">Bauer, G., Deutsch, C., Reep, R., Fellner, W., Gunnars, T., Cook, P., Harley, H., and <strong>Rycyk, A.</strong></span> (2026).
+          <span class="title">Cognition as a Conservation Tool: A Case Study of Florida Manatees and Boat Strikes.</span>
+          <span class="venue">Marine Mammal Science</span>, <span class="vol">42(2), e70176.</span>
+          <span class="doi"><a href="https://doi.org/10.1111/mms.70176" target="_blank">doi.org/10.1111/mms.70176</a></span>
+        </li>
+        <li class="pub">
+          <span class="authors">Quiros-Corella, F., <strong>Rycyk, A.</strong>, Brady, B., and Cubero-Pardo, P.</span> (2026).
+          <span class="title">Benchmarking an Integrated Deep Learning Pipeline for Robust Detection and Individual Counting of the Greater Caribbean Manatee.</span>
+          <span class="venue">Applied Sciences</span>, <span class="vol">16(5), 2446.</span>
+          <span class="doi"><a href="https://doi.org/10.3390/app16052446" target="_blank">doi.org/10.3390/app16052446</a></span>
+        </li>
+        <li class="pub">
+          <span class="authors">Bauer, G., Cook, P., Harley, H., ...<strong>Rycyk, A.</strong>...</span> (2026).
+          <span class="title">Exploring Marine Mammal Cognition as a Conservation Tool.</span>
+          <span class="venue">Marine Mammal Science</span>, <span class="vol">42:e70114.</span>
+          <span class="doi"><a href="https://doi.org/10.1111/mms.70114" target="_blank">doi.org/10.1111/mms.70114</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="year-block">
+      <div class="year-label">2025</div>
+      <ul class="pub-list">
+        <li class="pub">
+          <span class="authors">Roy, T., Wills, A., Skripnikov, A., and <strong>Rycyk, A.</strong></span> (2025).
+          <span class="title">Immersive Conservation: Leveraging Virtual Manatees to Promote Manatee Conservation Awareness Among K-12 Students.</span>
+          In J.Y.C. Chen and G. Fragomeni (Eds.), <span class="venue">Virtual, Augmented and Mixed Reality</span> (Vol. 15789, pp. 73-95). Springer Nature.
+          <span class="doi"><a href="https://doi.org/10.1007/978-3-031-93712-5_5" target="_blank">doi.org/10.1007/978-3-031-93712-5_5</a></span>
+        </li>
+        <li class="pub">
+          <span class="authors">Quiros-Corella, F., Cubero-Pardo, P., <strong>Rycyk, A.</strong>, Brady, B., et al.</span> (2025).
+          <span class="title">An Effective Artificial Intelligence Pipeline for Automatic Manatee Count Using their Tonal Vocalizations.</span>
+          In <span class="venue">Progress in Pattern Recognition, Image Analysis, Computer Vision, and Applications</span>, Springer Nature 15369, pp. 30-44.
+          <span class="doi"><a href="https://doi.org/10.1007/978-3-031-76604-6_3" target="_blank">doi.org/10.1007/978-3-031-76604-6_3</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="year-block">
+      <div class="year-label">2023</div>
+      <ul class="pub-list">
+        <li class="pub">
+          <span class="authors">Factheu, C., <strong>Rycyk, A.</strong>, Sevilor, K., Keith-Diagne, L., Ramos, E.&thinsp;A., Kikuchi, M., and Takoukam Kamla, A.</span> (2023).
+          <span class="title">Acoustic methods improve the detection of the endangered African manatee.</span>
+          <span class="venue">Frontiers in Marine Science</span>, <span class="vol">9:1032464.</span>
+          <span class="doi"><a href="https://doi.org/10.3389/fmars.2022.1032464" target="_blank">doi.org/10.3389/fmars.2022.1032464</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="year-block">
+      <div class="year-label">2022</div>
+      <ul class="pub-list">
+        <li class="pub">
+          <span class="authors"><strong>Rycyk, A.</strong>, Bolaji, D., Factheu, C., and Takoukam, A.</span> (2022).
+          <span class="title">Using transfer learning with a convolutional neural network to detect African manatee (<em>Trichechus senegalensis</em>) vocalizations.</span>
+          <span class="venue">JASA Express Letters</span>, <span class="vol">2(12), 121201.</span>
+          <span class="note">Editor's Pick &middot; Journal cover</span>
+          <span class="doi"><a href="https://doi.org/10.1121/10.0016543" target="_blank">doi.org/10.1121/10.0016543</a></span>
+        </li>
+        <li class="pub">
+          <span class="authors">Longden, E.&thinsp;G., Gillespie, D., Mann, D.&thinsp;A., McHugh, K.&thinsp;A., <strong>Rycyk, A.&thinsp;M.</strong>, Wells, R.&thinsp;S., and Tyack, P.&thinsp;L.</span> (2022).
+          <span class="title">Comparison of the marine soundscape before and during the COVID-19 pandemic in dolphin habitat in Sarasota Bay, FL.</span>
+          <span class="venue">J. Acoust. Soc. Am.</span>, <span class="vol">152, 3170-3185.</span>
+          <span class="doi"><a href="https://doi.org/10.1121/10.0015366" target="_blank">doi.org/10.1121/10.0015366</a></span>
+        </li>
+        <li class="pub">
+          <span class="authors"><strong>Rycyk, A.&thinsp;M.</strong>, Berchem, C., and Marques, T.&thinsp;A.</span> (2022).
+          <span class="title">Estimating Florida manatee (<em>Trichechus manatus latirostris</em>) abundance using passive acoustic methods.</span>
+          <span class="venue">JASA Express Letters</span>, <span class="vol">2(5), 051202.</span>
+          <span class="doi"><a href="https://doi.org/10.1121/10.0010495" target="_blank">doi.org/10.1121/10.0010495</a></span>
+        </li>
+        <li class="pub">
+          <span class="authors"><strong>Rycyk, A.&thinsp;M.</strong>, Bauer, G.&thinsp;B., Wells, R.&thinsp;S., Gaspard III, J.&thinsp;C., and Mann, D.&thinsp;A.</span> (2022).
+          <span class="title">The influence of variations in background noise on Florida manatee (<em>Trichechus manatus latirostris</em>) detection of boat noise and vocalizations.</span>
+          <span class="venue">PLoS ONE</span>, <span class="vol">17(5), e0268513.</span>
+          <span class="doi"><a href="https://doi.org/10.1371/journal.pone.0268513" target="_blank">doi.org/10.1371/journal.pone.0268513</a></span>
+        </li>
+        <li class="pub">
+          <span class="authors">Walsh, Z.&thinsp;C., Olson, H., Clendening, M., and <strong>Rycyk, A.&thinsp;M.</strong></span> (2022).
+          <span class="title">Social Behavior Deficiencies in Captive American Alligators (<em>Alligator mississippiensis</em>).</span>
+          <span class="venue">Journal of Zoological and Botanical Gardens</span>, <span class="vol">3, 131-146.</span>
+          <span class="note">Featured Paper</span>
+          <span class="doi"><a href="https://doi.org/10.3390/jzbg3010011" target="_blank">doi.org/10.3390/jzbg3010011</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="year-block">
+      <div class="year-label">2021</div>
+      <ul class="pub-list">
+        <li class="pub">
+          <span class="authors"><strong>Rycyk, A.</strong>, Factheu, C., Ramos, E.&thinsp;A., Brady, B., Kikuchi, M., Nations, H., Kapfer, K., Hampton, C., Garcia, E., and Takoukam Kamla, A.</span> (2021).
+          <span class="title">First characterization of vocalizations and passive acoustic monitoring of the vulnerable African manatee (<em>Trichechus senegalensis</em>).</span>
+          <span class="venue">J. Acoust. Soc. Am.</span>, <span class="vol">150, 3028-3037.</span>
+          <span class="doi"><a href="https://doi.org/10.1121/10.0006734" target="_blank">doi.org/10.1121/10.0006734</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="year-block">
+      <div class="year-label">2020</div>
+      <ul class="pub-list">
+        <li class="pub">
+          <span class="authors"><strong>Rycyk, A.&thinsp;M.</strong> and Tyson Moore, R.&thinsp;B. (co-first authors), Wells, R.&thinsp;S., McHugh, K.&thinsp;A., Berens McCabe, E.&thinsp;J., and Mann, D.&thinsp;A.</span> (2020).
+          <span class="title">Passive acoustic listening stations (PALS) show rapid onset of ecological effects of harmful algal blooms in real time.</span>
+          <span class="venue">Scientific Reports</span>, <span class="vol">10:17863.</span>
+          <span class="note">Co-first authors</span>
+          <span class="doi"><a href="https://doi.org/10.1038/s41598-020-74647-z" target="_blank">doi.org/10.1038/s41598-020-74647-z</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="year-block">
+      <div class="year-label">2018</div>
+      <ul class="pub-list">
+        <li class="pub">
+          <span class="authors"><strong>Rycyk, A.&thinsp;M.</strong>, Deutsch, C.&thinsp;J., Barlas, M.&thinsp;E., Hardy, S., Frisch, K., Leone, E.&thinsp;H., and Nowacek, D.&thinsp;P.</span> (2018).
+          <span class="title">Manatee behavioral responses to boats.</span>
+          <span class="venue">Marine Mammal Science</span>, <span class="vol">34: 924-962.</span>
+          <span class="note">Top 10% downloaded 2018-19</span>
+          <span class="doi"><a href="https://doi.org/10.1111/mms.12491" target="_blank">doi.org/10.1111/mms.12491</a></span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="year-block">
+      <div class="year-label">2016</div>
+      <ul class="pub-list">
+        <li class="pub">
+          <span class="authors">Martin, J., Sabatier, Q., Gowan, T.&thinsp;A., Giraud, C., Gurarie, E., Calleson, C.&thinsp;S., Ortega-Ortiz, J.&thinsp;G., Deutsch, C.&thinsp;J., <strong>Rycyk, A.&thinsp;M.</strong>, and Koslovsky, S.</span> (2016).
+          <span class="title">A quantitative framework for investigating risk of deadly collisions between marine wildlife and boats.</span>
+          <span class="venue">Methods in Ecology and Evolution</span>, <span class="vol">7: 42-50.</span>
+          <span class="doi"><a href="https://doi.org/10.1111/2041-210X.12447" target="_blank">doi.org/10.1111/2041-210X.12447</a></span>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section class="datasets-wrap" id="datasets">
+  <div class="pub-section-inner">
+    <div class="section-eyebrow">Open data</div>
+    <h2 class="section-title">Published datasets</h2>
+    <p class="section-blurb">Curated bioacoustic datasets released for the marine mammal and machine learning communities.</p>
+    <div class="dataset-card">
+      <div class="dataset-meta">
+        <div class="k">Year</div><div class="v">2025</div>
+        <div class="k">Repository</div><div class="v">Environmental Data Initiative</div>
+        <div class="k">Coverage</div><div class="v">2020-2022</div>
+      </div>
+      <div>
+        <h3>Bioacoustic dataset of African and Florida manatee vocalizations for machine learning applications</h3>
+        <div class="authors"><strong>Rycyk, A.</strong>, Cargille, V., Bolaji, D., Factheu, C., Ejimadu, U., Berchem, C., and Takoukam Kamla, A. (2025).</div>
+        <p class="desc">Annotated vocalizations of African (<em>Trichechus senegalensis</em>) and Florida (<em>T. manatus latirostris</em>) manatees from multiple field sites, packaged for training and benchmarking machine learning detectors.</p>
+        <div class="doi"><a href="https://doi.org/10.6073/pasta/f6b14cae6916da998808a8395cf38ae0" target="_blank">doi.org/10.6073/pasta/f6b14cae6916da998808a8395cf38ae0</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="pubs-foot">Author name in bold indicates the lab. Annotations note co-first authorship, journal recognition, and download metrics where applicable.</div>
+
+</div><!-- end pubs -->
+
+<!-- ═══════════════════════════════ GRADUATE PROGRAM ═══════════════════════════════ -->
+<div id="grad" class="page">
+
+<header class="pagehead">
+  <div class="pagehead-inner">
+    <div>
+      <div class="eyebrow">M.S. in Marine Mammal Science</div>
+      <h1>Graduate Program</h1>
+      <p class="lede">A two-year, research-based master's program at New College of Florida. Combines rigorous coursework with hands-on research and close faculty mentorship on Sarasota Bay.</p>
+    </div>
+    <nav class="toc">
+      <div class="toc-label">On this page</div>
+      <a href="#gp-about">About the program</a>
+      <a href="#gp-students">Current students</a>
+      <a href="#gp-prospective">Prospective students</a>
+    </nav>
+  </div>
+</header>
+
+<section class="gp-section" id="gp-about">
+  <div class="gp-section-inner">
+    <div class="section-eyebrow">About the program</div>
+    <h2 class="section-title">M.S. in Marine Mammal Science (MIMMS)</h2>
+    <div class="program-grid">
+      <div>
+        <p>The Master's in Marine Mammal Science at New College of Florida is an intensive, two-year research-based program offering students a unique opportunity to conduct publication-quality research on marine mammals. Located on Sarasota Bay, the program combines rigorous coursework with hands-on research and close faculty mentorship.</p>
+        <img src="SarasotaBay.jpg" alt="Sarasota Bay" style="width:100%;margin-top:20px;border-radius:4px;object-fit:cover;height:220px;object-position:center 40%;display:block">
+      </div>
+      <aside class="program-stats">
+        <div class="program-stat"><div class="k">Program</div><div class="v">M.S. in Marine Mammal Science</div></div>
+        <div class="program-stat"><div class="k">Institution</div><div class="v">New College of Florida</div></div>
+        <div class="program-stat"><div class="k">Format</div><div class="v">Two years, research-based</div></div>
+        <div class="program-stat"><div class="k">Location</div><div class="v">Sarasota, Florida</div></div>
+        <div class="program-stat"><div class="k">Program details</div><div class="v"><a href="https://www.ncf.edu/departments/mimms/" target="_blank">ncf.edu/departments/mimms</a></div></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="gp-section" id="gp-students">
+  <div class="gp-section-inner">
+    <div class="section-eyebrow">Lab members</div>
+    <h2 class="section-title">Current students</h2>
+    <p class="section-blurb">Master's students currently working in the Rycyk Lab.</p>
+    <div class="student-grid">
+      <article class="student-card">
+        <div class="student-avatar">TF</div>
+        <div><h3>Tyler Fortune</h3><p class="s-role">M.S. candidate, Marine Mammal Science</p><p class="project">Manatee presence at seagrass restoration sites via passive acoustic monitoring.</p></div>
+      </article>
+      <article class="student-card">
+        <div class="student-avatar">VC</div>
+        <div><h3>Vivian Cargille</h3><p class="s-role">M.S. candidate, Marine Mammal Science</p><p class="project">Cross-location generalization of CNN detectors for manatee vocalizations across seven sites in West Africa and Florida. Uses location-specific noise injection and a BirdNET / MobileNet / PANNs ensemble to recover detection performance on novel acoustic environments.</p></div>
+      </article>
+      <article class="student-card">
+        <div class="student-avatar">HW</div>
+        <div><h3>Helena Wood-Barron</h3><p class="s-role">M.S. candidate, Marine Mammal Science</p><p class="project">Geographic variation in African manatee (<em>Trichechus senegalensis</em>) vocalizations across Cameroon, Nigeria, Senegal, Benin, and the Republic of Congo.</p></div>
+      </article>
+      <article class="student-card tba">
+        <div class="student-avatar">JL</div>
+        <div><h3>Jenny Lee</h3><p class="s-role">M.S. candidate, Marine Mammal Science</p></div>
+      </article>
+      <article class="student-card tba">
+        <div class="student-avatar">AL</div>
+        <div><h3>Addison Love</h3><p class="s-role">M.S. candidate, Marine Mammal Science</p></div>
+      </article>
+      <article class="student-card tba">
+        <div class="student-avatar">JS</div>
+        <div><h3>Jordan Spencer</h3><p class="s-role">M.S. candidate, Marine Mammal Science</p></div>
+      </article>
+      <article class="student-card tba">
+        <div class="student-avatar">AD</div>
+        <div><h3>Alex Demetropoulos</h3><p class="s-role">M.S. candidate, Marine Mammal Science</p></div>
+      </article>
+      <article class="student-card tba">
+        <div class="student-avatar">BL</div>
+        <div><h3>Brianna Longo</h3><p class="s-role">M.S. candidate, Marine Mammal Science</p></div>
+      </article>
+      <article class="student-card tba">
+        <div class="student-avatar">CS</div>
+        <div><h3>Chloe Shuskey</h3><p class="s-role">M.S. candidate, Marine Mammal Science</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="prospective" id="gp-prospective">
+  <div class="prospective-inner">
+    <div>
+      <h2>Prospective students</h2>
+      <p>I welcome inquiries from prospective master's students interested in bioacoustics, marine mammal behavior, and machine learning for conservation.</p>
+      <p>Please reach out with a brief description of your research interests and background. The MIMMS application portal is the formal route; an introductory email beforehand is encouraged.</p>
+      <ul class="interests">
+        <li>Passive acoustic monitoring</li>
+        <li>Machine learning for bioacoustics</li>
+        <li>Marine mammal behavior and conservation</li>
+        <li>Soundscape ecology</li>
+      </ul>
+    </div>
+    <aside class="cta-card">
+      <div class="label">Get in touch</div>
+      <h3>Reach out before you apply</h3>
+      <p>An introductory email helps us figure out fit and discuss possible projects before formal applications open.</p>
+      <div class="cta-row">
+        <a class="cta-btn primary" href="mailto:arycyk@ncf.edu"><span>Email Dr. Rycyk</span><span class="arrow">&rarr;</span></a>
+        <a class="cta-btn ghost" href="https://apply.ncf.edu/portal/app_gr" target="_blank"><span>Apply to MIMMS</span><span class="arrow">&rarr;</span></a>
+        <a class="cta-btn ghost" href="https://www.ncf.edu/departments/mimms/" target="_blank"><span>Program information</span><span class="arrow">&rarr;</span></a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</div><!-- end grad -->
+
+<!-- ═══════════════════════════════ UNDERGRADUATE THESES ═══════════════════════════════ -->
+<div id="ugtheses" class="page">
+
+<header class="pagehead">
+  <div class="pagehead-inner">
+    <div>
+      <div class="eyebrow">Student research</div>
+      <h1>Undergraduate Theses</h1>
+      <p class="lede">Undergraduate thesis projects sponsored from the Rycyk Lab at New College of Florida.</p>
+    </div>
+  </div>
+</header>
+
+<section class="pub-section">
+  <div class="pub-section-inner">
+
+    <div class="thesis-year-block">
+      <div class="thesis-year-label">2025</div>
+      <ul class="thesis-list">
+        <li class="thesis-item"><span class="t-author">Hollick, A.</span> A behavioral analysis of orca (<em>Orcinus orca</em>) attacks in the Mediterranean Sea.</li>
+        <li class="thesis-item"><span class="t-author">El Halabi Sanchez, H.</span> Do whitespotted eagle rays demonstrate prey preference?</li>
+        <li class="thesis-item"><span class="t-author">Ubry, L.</span> Evaluating the effects of coastal development on sea turtle nesting success in Southwest Florida.</li>
+      </ul>
+    </div>
+
+    <div class="thesis-year-block">
+      <div class="thesis-year-label">2024</div>
+      <ul class="thesis-list">
+        <li class="thesis-item"><span class="t-author">Cargille, V.</span> New College Dolphins: Automated whistle extraction.</li>
+        <li class="thesis-item"><span class="t-author">Craig, A.</span> Exploring the impact of shark ecotourism on shark behavior and public perception.</li>
+        <li class="thesis-item"><span class="t-author">Levich, J.</span> Analysis of stress indicators in sharks in relation to capture methods.</li>
+        <li class="thesis-item"><span class="t-author">Mendoza, A.</span> Science Communication: The human connection to marine science through digital storytelling.</li>
+        <li class="thesis-item"><span class="t-author">Birdsong, S.</span> A Literature Review of Learning Capabilities in Non-Avian Reptiles.</li>
+        <li class="thesis-item"><span class="t-author">Nigro, M.</span> Enrichment responses of captive mammalian carnivores.</li>
+        <li class="thesis-item"><span class="t-author">Pertler, M.</span> Exploring the use of magnets as a form of shark deterrent in recreational fisheries.</li>
+        <li class="thesis-item"><span class="t-author">Mitchell, P.</span> A comparison of domesticated rat behavior between differing environment types.</li>
+        <li class="thesis-item"><span class="t-author">Lyons, L.</span> Quantitative analysis of freely-circulating vs. exosomal microRNAs in canine congestive heart failure.</li>
+      </ul>
+    </div>
+
+    <div class="thesis-year-block">
+      <div class="thesis-year-label">2023</div>
+      <ul class="thesis-list">
+        <li class="thesis-item"><span class="t-author">Wood-Barron, H.</span> Crocodile talk: Structural analysis of American and Morelet's crocodile vocalizations in Belize.</li>
+        <li class="thesis-item"><span class="t-author">Ponce, D.</span> Identifying biomarkers of brevetoxin exposure in the Northern quahog metabolome.</li>
+        <li class="thesis-item"><span class="t-author">Swartz, A.</span> Common karp and koi coloration from cultural and scientific perspectives.</li>
+      </ul>
+    </div>
+
+    <div class="thesis-year-block">
+      <div class="thesis-year-label">2022</div>
+      <ul class="thesis-list">
+        <li class="thesis-item"><span class="t-author">Olson, H.</span> Underwater sound localization in Mississippi map turtles (<em>Graptemys pseudogeographica kohnii</em>).</li>
+        <li class="thesis-item"><span class="t-author">Gross, S.</span> How effective are flowerpot snakes when it comes to controlling termite pest populations?</li>
+      </ul>
+    </div>
+
+    <div class="thesis-year-block">
+      <div class="thesis-year-label">2021</div>
+      <ul class="thesis-list">
+        <li class="thesis-item"><span class="t-author">Nations, H.</span> Sleeping with the (cuttle)fishes: measuring sleep through arousal threshold in the dwarf cuttlefish (<em>Sepia bandensis</em>).</li>
+        <li class="thesis-item"><span class="t-author">Kapfer, K.</span> The phenology of humpback, blue, fin, sperm, and killer whales determined by passive acoustic monitoring near Barkley Canyon.</li>
+        <li class="thesis-item"><span class="t-author">McDonnell, I.</span> Growth patterns and the effect of pH on the Florida manatee (<em>Trichechus manatus latirostris</em>) vibrissae.</li>
+        <li class="thesis-item"><span class="t-author">Long, M.</span> Distribution of the Bigg's killer whale ecotype in the Salish Sea with regards to seasonality and pinniped vulnerability.</li>
+        <li class="thesis-item"><span class="t-author">Garcia, E.</span> Characteristics of wild Florida manatee (<em>Trichechus manatus latirostris</em>) vocalizations in different sized groups.</li>
+        <li class="thesis-item"><span class="t-author">DuBree, C.</span> Directional discrimination of goldfish conditioned under pure blue to pure green light spectrum.</li>
+      </ul>
+    </div>
+
+    <div class="thesis-year-block">
+      <div class="thesis-year-label">2020</div>
+      <ul class="thesis-list">
+        <li class="thesis-item"><span class="t-author">Dina, V.</span> The underwater vocal repertoire of the North American river otter.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- end ugtheses -->
+
+<!-- ═══════════════════════════════ TEACHING ═══════════════════════════════ -->
+<div id="teaching" class="page">
+
+<header class="pagehead">
+  <div class="pagehead-inner">
+    <div>
+      <div class="eyebrow">Coursework &amp; field programs</div>
+      <h1>Teaching</h1>
+      <p class="lede">Courses spanning marine mammal biology, bioacoustics, animal behavior, ecology, and environmental science, from first-year seminars to graduate research courses.</p>
+    </div>
+  </div>
+</header>
+
+<section class="pub-section">
+  <div class="pub-section-inner">
+    <div class="section-eyebrow">Current &amp; recent</div>
+    <h2 class="section-title">Courses at New College of Florida</h2>
+    <p class="section-blurb">Includes introductory, advanced, and graduate-level offerings. New courses marked in teal.</p>
+    <div class="course-cols">
+      <div class="course-item new-course">Practical AI for Researchers <em style="font-size:13px;color:var(--accent);font-family:'Source Serif 4',serif;">  new, graduate</em></div>
+      <div class="course-item">Seminar in Marine Mammal Science</div>
+      <div class="course-item">Marine Mammal Biology</div>
+      <div class="course-item">Marine Mammal Behavior</div>
+      <div class="course-item">Research Methods in Biology</div>
+      <div class="course-item">Research Methods: Ecology, Acoustics, and Field</div>
+      <div class="course-item">Analysis of Manatee Mortality Events</div>
+      <div class="course-item">Lab in Field of Study: Manatee Behavior and Conservation</div>
+      <div class="course-item">Animal Behavior (Lecture and Lab)</div>
+      <div class="course-item">Conservation Behavior</div>
+      <div class="course-item">Marine Ecology Laboratory</div>
+      <div class="course-item">Foundations of Biology I</div>
+      <div class="course-item">Introduction to Environmental Studies</div>
+      <div class="course-item">First Year Seminar: The Inquisitive Scientist</div>
+    </div>
+  </div>
+</section>
+
+<section class="pub-section">
+  <div class="pub-section-inner">
+    <div class="section-eyebrow">Immersive programs</div>
+    <h2 class="section-title">Field &amp; immersive courses</h2>
+
+    <div class="field-card">
+      <div class="field-imgs">
+        <img src="Kayayking%20group.png" alt="Students kayaking in Sarasota Bay" class="field-img">
+        <img src="TECO.png" alt="TECO Manatee Viewing Center" class="field-img">
+      </div>
+      <div class="field-body">
+        <h3>Acoustical Ecology of Sarasota Bay</h3>
+        <p><em>January 2019, New College of Florida.</em> Students examined sound-producing species in Sarasota Bay, built a sound identification guide, and analyzed recordings from the Sarasota Bay Listening Network. Field trips included Loggerhead Instruments, manatee observation at Weeki Wachee, and the Manatee Viewing Center at the Big Bend Power Station.</p>
+      </div>
+    </div>
+
+    <div class="field-card">
+      <div class="field-imgs">
+        <img src="Yasuni.JPG" alt="Yasuni National Park, Ecuador" class="field-img">
+        <img src="Isabela.JPG" alt="Isabela Island, Galapagos" class="field-img">
+      </div>
+      <div class="field-body">
+        <h3>Natural History of the Galapagos Islands and Ecuador</h3>
+        <p><em>January 2018, Eckerd College.</em> A three-week expedition across cloud forest, rainforest, paramo, and the Galapagos Islands, including Santa Lucia Cloud Forest Reserve, Yasuni National Park, and Isabela Island.</p>
+      </div>
+    </div>
+
+    <div class="field-card">
+      <div class="field-imgs">
+        <img src="RycykSnorkel.JPG" alt="Dr. Rycyk snorkeling with manatees" class="field-img" style="object-position:center 20%">
+        <img src="ThreeManatees.JPG" alt="Three Florida manatees" class="field-img">
+      </div>
+      <div class="field-body">
+        <h3>Sirenian Biology</h3>
+        <p><em>January 2016 and 2017, University of Southern Mississippi / Gulf Coast Research Laboratory.</em> A field-intensive course attracting students from across the country. Included trips across Florida to observe wild manatees, participation in a manatee necropsy, and student-designed research projects using previously collected data.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- end teaching -->
+
+<!-- ═══════════════════════════════ MEDIA ═══════════════════════════════ -->
+<div id="media" class="page">
+
+<header class="pagehead">
+  <div class="pagehead-inner">
+    <div>
+      <div class="eyebrow">Audio recordings</div>
+      <h1>Sounds</h1>
+      
+    </div>
+  </div>
+</header>
+
+<section class="pub-section">
+  <div class="pub-section-inner">
+    <div class="section-eyebrow">Sounds from the lab</div>
+    <h2 class="section-title">Sound clips</h2>
+    
+
+    <div class="audio-grid">
+      <div class="audio-card">
+        <img src="manatee%20and%20vocs.png" alt="Manatee vocalization spectrogram" class="spectrogram" style="object-position:right 20%">
+        <div class="audio-body">
+          <h4>Florida manatee vocalizations</h4>
+          <p>Manatees produce short, harmonically-rich chirps and squeaks in social contexts. Multiple manatees vocalizing back and forth.</p>
+          <audio controls><source src="ManateeSound.wav" type="audio/wav">Your browser does not support the audio element.</audio>
+        </div>
+      </div>
+      <div class="audio-card">
+        <img src="DolphinMaddie.png" alt="Dolphin signature whistle spectrogram" class="spectrogram">
+        <div class="audio-body">
+          <h4>Dolphin signature whistle   Maddie</h4>
+          <p>Individual bottlenose dolphins (<em>Tursiops truncatus</em>) have unique signature whistles. This is Maddie, a resident of Sarasota Bay who regularly visits the New College acoustic station.</p>
+          <audio controls><source src="DolphinMaddie.wav" type="audio/wav">Your browser does not support the audio element.</audio>
+        </div>
+      </div>
+      <div class="audio-card">
+        <img src="Multiple%20fish%20species_trimmed.png" alt="Multi-species fish chorus spectrogram" class="spectrogram">
+        <div class="audio-body">
+          <h4>Multi-species fish chorus   Sarasota Bay</h4>
+          <p>A recording from the Sarasota Bay Listening Network capturing the evening fish chorus.</p>
+          <audio controls><source src="Multi-species%20fish%20chorus.wav" type="audio/wav">Your browser does not support the audio element.</audio>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
+</div><!-- end media -->
+
+<!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
+<div id="about" class="page">
+
+<header class="pagehead">
+  <div class="pagehead-inner">
+    <div>
+      <div class="eyebrow">Background &amp; biography</div>
+      <h1>About</h1>
+      <p class="lede">Associate Professor of Marine Mammal Science and Biology at New College of Florida.</p>
+    </div>
+  </div>
+</header>
+
+<section class="pub-section">
+  <div class="pub-section-inner">
+    <div class="section-eyebrow">Biography</div>
+    <h2 class="section-title">Athena Rycyk, Ph.D.</h2>
+
+    <div class="about-grid">
+      <div class="about-bio">
+        <p>I am an Associate Professor of Marine Mammal Science and Biology at New College of Florida, where I have been on faculty since 2015. I earned my Ph.D. and M.S. in Biological Oceanography from Florida State University (advisor: Doug Nowacek) and my B.A. in Biological Psychology from New College of Florida.</p>
+        <p>My research spans marine bioacoustic monitoring, soundscape ecology, behavioral ecology, cognitive approaches to conservation, and machine learning for automated species detection. I have extensive experience in acoustic data collection, with active collaborations in the United States, Cameroon, Nigeria, Senegal, Benin, and Belize.</p>
+        <p>I am a founding faculty member of NCF's M.S. in Marine Mammal Science program.</p>
+      </div>
+      <aside class="about-sidebar">
+        <div class="about-stat"><div class="k">Position</div><div class="v">Associate Professor of Marine Mammal Science and Biology</div></div>
+        <div class="about-stat"><div class="k">Institution</div><div class="v">New College of Florida</div></div>
+        <div class="about-stat"><div class="k">Location</div><div class="v">Caples Hall 203, Sarasota, FL 34243</div></div>
+        <div class="about-stat"><div class="k">Email</div><div class="v"><a href="mailto:arycyk@ncf.edu" style="color:var(--teal);text-decoration:none;border-bottom:1px solid var(--aqua-pale)">arycyk@ncf.edu</a></div></div>
+        <div class="about-stat"><div class="k">Phone</div><div class="v">(941) 487-4937</div></div>
+      </aside>
+    </div>
+
+    <div class="section-eyebrow" style="margin-top:40px;margin-bottom:16px">Education</div>
+
+    <div class="edu-block">
+      <div class="edu-year">2013</div>
+      <div class="edu-body">
+        <h4>Ph.D. Biological Oceanography</h4>
+        <div class="inst">Florida State University   advisor Doug Nowacek</div>
+        <div class="thesis">Dissertation: Manatee reactions to boats; acoustic cues in boat noise; comparison with less boat-exposed manatees in Belize</div>
+      </div>
+    </div>
+    <div class="edu-block">
+      <div class="edu-year">2007</div>
+      <div class="edu-body">
+        <h4>M.S. Biological Oceanography</h4>
+        <div class="inst">Florida State University   advisor Doug Nowacek</div>
+        <div class="thesis">Thesis: Vocal behavior and soundscapes of bottlenose dolphin communities in the Big Bend region of Florida</div>
+      </div>
+    </div>
+    <div class="edu-block">
+      <div class="edu-year">2004</div>
+      <div class="edu-body">
+        <h4>B.A. Biological Psychology</h4>
+        <div class="inst">New College of Florida</div>
+        <div class="thesis">Thesis: Manatee psychophysical testing: are results biased by sequence learning?</div>
+      </div>
+    </div>
+
+    <div class="section-eyebrow" style="margin-top:48px;margin-bottom:16px">Selected grants</div>
+    <ul class="grant-list">
+      <li class="grant-item">
+        <div><div class="grant-amount">$331,274</div><div class="grant-source">NOAA Sea Grant, 2025</div></div>
+        <div class="grant-desc">Development of a cost-effective and scalable protected species monitoring plan for the Velella Epsilon and future finfish aquaculture projects in the Gulf. With Powell, Feldman, Peters, and Sims.</div>
+      </li>
+      <li class="grant-item">
+        <div><div class="grant-amount">$14,985</div><div class="grant-source">Environmental Discovery Award, 2021</div></div>
+        <div class="grant-desc">Sarasota Bay Dolphin Acoustics.</div>
+      </li>
+      <li class="grant-item">
+        <div><div class="grant-amount">$8,500</div><div class="grant-source">Environmental Discovery Award, 2020</div></div>
+        <div class="grant-desc">Acoustic analysis of aquatic sound-producing organisms.</div>
+      </li>
+      <li class="grant-item">
+        <div><div class="grant-amount">$3,900</div><div class="grant-source">Women's Giving Circle, 2018</div></div>
+        <div class="grant-desc">Acoustic analysis software for undergraduate students.</div>
+      </li>
+      <li class="grant-item">
+        <div><div class="grant-amount">$32,300</div><div class="grant-source">Clearwater Marine Aquarium, 2015</div></div>
+        <div class="grant-desc">Underwater Behavioral Audiograms of Sea Turtles (Co-I).</div>
+      </li>
+    </ul>
+
+  </div>
+</section>
+
+</div><!-- end about -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div>Rycyk Lab &middot; New College of Florida &middot; Sarasota, FL<br><a href="mailto:arycyk@ncf.edu">arycyk@ncf.edu</a> &middot; <a href="https://www.ncf.edu/departments/mimms/" target="_blank">MIMMS Program</a></div>
+    <a href="https://www.ncf.edu" target="_blank"><img src="NCF Logo.jpg" alt="New College of Florida"></a>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  var nl = document.getElementById('nav-links');
+  nl.classList.toggle('open');
+}
+function closeMenu() {
+  var nl = document.getElementById('nav-links');
+  nl.classList.remove('open');
+}
+function go(id) {
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('on'); });
+  document.querySelectorAll('.nav-links a').forEach(function(a){ a.classList.remove('active'); });
+  var page = document.getElementById(id);
+  if (page) page.classList.add('on');
+  var map = {home:0,pubs:1,grad:2,ugtheses:3,teaching:4,media:5,about:6};
+  var links = document.querySelectorAll('.nav-links a');
+  if (map[id] !== undefined) links[map[id]].classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>
